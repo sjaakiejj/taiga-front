@@ -14,27 +14,27 @@
         display: inline-block;
         margin-left: .25rem;
         position: relative;
+        .detail-status-inner {
+            color: $white;
+            display: flex;
+            justify-content: center;
+            padding: .15rem .25rem;
+            text-transform: uppercase;
+        }
+        .pop-status {
+            @include popover(150px, 1.25rem, 0, '', '');
+            padding: 0;
+            text-transform: none;
+            a {
+                @extend %text;
+                padding: .5rem 1rem;
+            }
+            a:hover {
+                background: rgba($primary-light, .2);
+            }
+        }
         .icon-arrow-bottom {
             margin-left: .25rem;
-        }
-    }
-    .detail-status-inner {
-        color: $white;
-        display: flex;
-        justify-content: center;
-        padding: .15rem .25rem;
-        text-transform: uppercase;
-    }
-    .pop-status {
-        @include popover(150px, 1.25rem, 0, '', '');
-        padding: 0;
-        text-transform: none;
-        a {
-            @extend %text;
-            padding: .5rem 1rem;
-        }
-        a:hover {
-            background: rgba($primary-light, .2);
         }
     }
 }
@@ -47,6 +47,19 @@
         margin-left: .25rem;
     }
 }
+
+.ticket-data {
+    .ticket-estimation {
+        .ticket-role-points {
+            max-width: 25%;
+            &:first-child {
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
+
 
 .ticket-status {
     &:last-child {
