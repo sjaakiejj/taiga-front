@@ -64,7 +64,7 @@
         .assign-to-me {
             color: $primary;
             cursor: default;
-            &:hover {
+            &.editable {
                 cursor: pointer;
             }
             .icon {
