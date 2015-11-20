@@ -77,6 +77,14 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
+    $routeProvider.when("/discover/",
+        {
+            templateUrl: "discover/discover.html",
+            title: "PROJECT.NAVIGATION.DISCOVER",
+            loader: true
+        }
+    )
+
     $routeProvider.when("/projects/",
         {
             templateUrl: "projects/listing/projects-listing.html",
@@ -664,6 +672,7 @@ modules = [
     "taigaHome",
     "taigaUserTimeline",
     "taigaExternalApps",
+    "taigaDiscover",
 
     # template cache
     "templates",
