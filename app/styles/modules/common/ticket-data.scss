@@ -39,12 +39,6 @@
     }
 }
 
-
-
-
-
-// -------------------------------------------------------------- //
-
 .ticket-data-container {
     @extend %small;
     @extend %normal;
@@ -141,6 +135,7 @@
         }
         &:hover {
             background: $primary-light;
+
         }
         &.is-hover {
             background: $red;
