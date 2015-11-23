@@ -53,6 +53,7 @@ urls = {
     "permission-denied": "/permission-denied"
 
     "discover": "/discover"
+    "discover-search": "/discover/search"
 
     "login": "/login"
     "forgot-password": "/forgot-password"
