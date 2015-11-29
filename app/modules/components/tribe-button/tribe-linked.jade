@@ -11,20 +11,20 @@
             a.close(
                 ng-click="vm.hide()"
                 href=""
-                title="{{ 'US.TRIBE.DELETE_LINK' | translate }}"
+                title="{{ 'US.TRIBE.CLOSE' | translate }}"
             )
                 include ../../../svg/remove.svg
         // Add here the US name
         a.gig-title(
             href=""
-            title="Logotipo para una empresa de tecnología"
+            title="gigTitle"
             target="_blank"
-        ) Logotipo para una empresa de tecnología
+        ) {{gigTitle}}
         a.delete-link(
-            href=""
-            title="{{ 'US.TRIBE.DELETE_LINK' | translate }}"
-        ) {{ 'US.TRIBE.DELETE_LINK' | translate }}
+            href="http://localhost:5000/gigs/{{gigId}}/link-with-taiga"
+            title="{{ 'US.TRIBE.EDIT_LINK' | translate }}"
+        ) {{ 'US.TRIBE.EDIT_LINK' | translate }}
         a.synchronize-link.button-tribe(
-            href=""
+            href="http://localhost:5000/gigs/sync/{{gigId}}"
             title="{{ 'US.TRIBE.SINCHRONIZE_LINK' }}"
         ) {{ 'US.TRIBE.SYNCHRONIZE_LINK' | translate }}

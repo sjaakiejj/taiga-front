@@ -104,7 +104,7 @@ div.wrapper(
                 ng-model="us"
             )
             
-            div(tg-tribe-linked)
+            div(tg-tribe-linked, ng-if="us.tribe_gig", gig-title="us.tribe_gig.title", gig-id="us.tribe_gig.id")
             
         //tg-created-by-display.ticket-created-by(ng-model="us")
 
@@ -130,8 +130,8 @@ div.wrapper(
                 required-perm="modify_us"
             )
             
-        section.ticket-to-tribe
-            tg-tribe-button
+        section.ticket-to-tribe(ng-if="!us.tribe_gig")
+            tg-tribe-button(us-id="us.id", project-id="project.id")
 
         section.ticket-detail-settings
             tg-us-team-requirement-button(ng-model="us")

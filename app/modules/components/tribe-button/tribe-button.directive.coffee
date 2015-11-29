@@ -19,7 +19,7 @@
 
 TribeButtonDirective = ->
     return {
-        scope: {}
+        scope: {usId: "=", projectId: "="}
         controllerAs: "vm",
         templateUrl: "components/tribe-button/tribe-button.html",
     }

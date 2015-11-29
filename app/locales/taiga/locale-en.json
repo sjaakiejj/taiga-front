@@ -889,7 +889,8 @@
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
-            "DELETE_LINK": "Delete link",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe"
         },
         "FIELDS": {

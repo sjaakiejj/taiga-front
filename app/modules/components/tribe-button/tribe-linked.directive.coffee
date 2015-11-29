@@ -31,7 +31,7 @@ TribeLinkedDirective = ->
 
     directive = {
         templateUrl: "components/tribe-button/tribe-linked.html",
-        scope: {}
+        scope: {gigTitle: "=", gigId: "="}
         link: link
     }
 
