@@ -1,25 +1,25 @@
 .highlighted {
     @include centered;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     .most-active,
     .most-liked {
-        flex-basis: 45%;
+        flex-basis: 40%;
     }
     .header {
         align-items: center;
         display: flex;
         justify-content: space-between;
         margin-bottom: 1rem;
+        svg {
+            @include svg-size(1.5rem);
+            fill: $gray-light;
+            margin: .5rem;
+        }
     }
     .title-wrapper {
         align-items: center;
         display: flex;
-    }
-    svg {
-        @include svg-size(1.25rem, 1.25rem);
-        fill: $gray-light;
-        margin: .5rem;
     }
     .title {
         @extend %bold;
@@ -27,6 +27,10 @@
         color: $grayer;
         display: inline-block;
         margin: 0;
+    }
+    .view-more-projects {
+        display: block;
+        margin: 1rem 2rem 0;
     }
 }
 
@@ -62,5 +66,61 @@
         &:hover {
             background: rgba($primary-light, .4);
         }
+    }
+}
+
+.highlighted-project {
+    align-items: flex-start;
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    padding: 1.5rem 0;
+    &:nth-last-child(-n+2) {
+        border-bottom: 0;
+    }
+    .project-logo {
+        flex-basis: 3rem;
+        height: auto;
+        margin-right: 1rem;
+        width: 3rem;
+    }
+    .project-data-container {
+        flex: 1;
+    }
+    .single-project-header {
+        align-content: center;
+        display: flex;
+        justify-content: space-between;
+    }
+    .project-title {
+        @extend %large;
+        @extend %text;
+        display: inline;
+        a {
+            color: $primary;
+        }
+    }
+    .look-for-people {
+        svg {
+            @include svg-size();
+            fill: $gray-light;
+            margin-left: .5rem;
+        }
+    }
+    .project-statistics {
+        span {
+            @extend %small;
+            display: inline-block;
+            margin-right: .25rem;
+        }
+        svg {
+            @include svg-size(.8rem);
+            fill: $gray-light;
+            margin-right: .2rem;
+        }
+    }
+    .project-description {
+        @extend %small;
+        color: $gray;
+        margin-bottom: 0;
     }
 }

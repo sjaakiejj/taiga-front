@@ -1432,6 +1432,7 @@
         "DISCOVER_SUBTITLE": "More than {{vm.projects}} projects to discover",
         "MOST_ACTIVE": "Most active",
         "MOST_LIKED": "Most liked",
+        "VIEW_MORE": "View more",
         "FILTERS": {
             "ALL": "All",
             "KANBAN": "Kanban",

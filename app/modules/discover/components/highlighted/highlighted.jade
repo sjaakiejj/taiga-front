@@ -1,9 +1,33 @@
-div
+.single-project
     div(ng-if="vm.loading")
         p loading...
 
-    div(tg-repeat="project in vm.highlighted track by project.get('id')")
-        h2 {{::project.get('name')}}
-        p {{::project.get('description')}}
+    div.highlighted-project(tg-repeat="project in vm.highlighted track by project.get('id')")
+        img.project-logo(
+            src="/#{v}/images/logo-color.png"
+            alt="{{::project.get('name')}}"
+        )
+        .project-data-container
+            .single-project-header
+                h2.project-title 
+                    a(
+                        href="#"
+                        title="{{::project.get('name')}}"    
+                    ) {{::project.get('name')}}
+                    span.look-for-people
+                        include ../../../../svg/search.svg
+                .project-statistics
+                    span.likers
+                        include ../../../../svg/like.svg
+                        span 23
+                    span.watchers
+                        include ../../../../svg/eye.svg
+                        span 11
+                    span.team
+                        include ../../../../svg/flag.svg
+                        span 232
+            p.project-description {{::project.get('description')}}
 
-    a(href="#") View more
+    a.view-more-projects.button-green(
+        href="#"
+    ) {{ 'DISCOVER.VIEW_MORE' | translate }}
