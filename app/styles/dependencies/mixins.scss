@@ -147,3 +147,10 @@
         cursor: progress;
     }
 }
+
+@mixin centered {
+    margin: 1rem auto;
+    max-width: 1200px;
+    min-width: 960px;
+    width: 90%;
+}

@@ -14,23 +14,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: msot-liked.controller.coffee
+# File: most-active.controller.coffee
 ###
 
-class MostLikedController
+class MostActiveController
     @.$inject = [
         "tgDiscoverProjectsService"
     ]
 
     constructor: (@discoverProjectsService) ->
-        taiga.defineImmutableProperty @, "mostLiked", () => return @discoverProjectsService.mostLiked
+        taiga.defineImmutableProperty @, "highlighted", () => return @discoverProjectsService.mostActive
 
-        @discoverProjectsService.fetchMostLiked()
+        @discoverProjectsService.fetchMostActive()
 
     orderBy: (type) ->
         @.loading = true
 
-        @discoverProjectsService.fetchMostLiked({sort_by: type}).then () =>
+        @discoverProjectsService.fetchMostActive({sort_by: type}).then () =>
             @.loading = false
 
-angular.module("taigaDiscover").controller("MostLiked", MostLikedController)
+angular.module("taigaDiscover").controller("MostActive", MostActiveController)

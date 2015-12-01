@@ -1,32 +1,41 @@
-section.discover
-    h1 Discover Projects
-    p More than {{vm.projects}} projects to discover
+div.discover-header
+    div.discover-header-inner
 
-    form
-        input(
-            name="search",
-            type="text",
-            placeholder="Search"
-            ng-model="vm.q"
-        )
+        h1.title {{ DISCOVER.DISCOVER_TITLE | translate }}
+        p.project-number {{ DISCOVER.DISCOVER_SUBTITLE | translate }}  
 
-        ul(ng-if="vm.filter", style="display: flex")
-            li(
-                ng-class="{active: vm.filter == 'all'}",
-                ng-click="vm.selectFilter('all')"
-            ) All
+        form
+            div.searchbox
+                input(
+                    name="search",
+                    type="text",
+                    placeholder="Search"
+                    ng-model="vm.q"
+                )
+                a.search-button(
+                    href=""
+                    title="{{ COMMON.SEARCH | translate }}"
+                )
+                    include ../../../../svg/search.svg
+            
 
-            li(
-                ng-class="{active: vm.filter == 'kanban'}",
-                ng-click="vm.selectFilter('kanban')"
-            ) Kanban
+            ul(ng-if="vm.filter", style="display: flex")
+                li(
+                    ng-class="{active: vm.filter == 'all'}",
+                    ng-click="vm.selectFilter('all')"
+                ) {{ DISCOVER.FILTERS.ALL | translate }}
 
-            li(
-                ng-class="{active: vm.filter == 'scrum'}",
-                ng-click="vm.selectFilter('scrum')"
-            ) Scrum
+                li(
+                    ng-class="{active: vm.filter == 'kanban'}",
+                    ng-click="vm.selectFilter('kanban')"
+                ) {{ DISCOVER.FILTERS.KANBAN | translate }}
 
-            li(
-                ng-class="{active: vm.filter == 'people'}",
-                ng-click="vm.selectFilter('people')"
-            ) Looking for people
+                li(
+                    ng-class="{active: vm.filter == 'scrum'}",
+                    ng-click="vm.selectFilter('scrum')"
+                ) {{ DISCOVER.FILTERS.SCRUM | translate }}
+
+                li(
+                    ng-class="{active: vm.filter == 'people'}",
+                    ng-click="vm.selectFilter('people')"
+                ) {{ DISCOVER.FILTERS.PEOPLE | translate }}

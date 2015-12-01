@@ -23,7 +23,7 @@ MostActiveDirective = () ->
     return {
         controller: "MostActive"
         controllerAs: "vm",
-        templateUrl: "discover/components/most-active/most-active.html",
+        templateUrl: "discover/components/highlighted/highlighted.html",
         scope: {},
         link: link
     }

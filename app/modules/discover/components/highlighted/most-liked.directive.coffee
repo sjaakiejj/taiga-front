@@ -23,7 +23,7 @@ MostLikedDirective = () ->
     return {
         controller: "MostLiked"
         controllerAs: "vm",
-        templateUrl: "discover/components/most-liked/most-liked.html",
+        templateUrl: "discover/components/highlighted/highlighted.html",
         scope: {},
         link: link
     }

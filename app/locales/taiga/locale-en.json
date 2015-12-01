@@ -1426,5 +1426,17 @@
                 "TEXT2": "Good luck!"
             }
         }
+    },
+    "DISCOVER": {
+        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_SUBTITLE": "More than {{vm.projects}} projects to discover",
+        "MOST_ACTIVE": "Most active",
+        "MOST_LIKED": "Most liked",
+        "FILTERS": {
+            "ALL": "All",
+            "KANBAN": "Kanban",
+            "SCRUM": "Scrum",
+            "PEOPLE": "Looking for people",
+        }
     }
 }
