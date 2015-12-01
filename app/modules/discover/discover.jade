@@ -4,12 +4,20 @@ section.discover
     header
         tg-discover-search-bar
     
-    section.higlighted
+    section.highlighted
         .most-liked
-            h1 {{ DISCOVER.MOST_LIKED | translate }}
+            .header
+                .title-wrapper
+                    include ../../svg/like.svg
+                    h1.title {{ 'DISCOVER.MOST_LIKED' | translate }}
+                tg-discover-home-order-by(on-change="vm.orderBy(type)")
             tg-most-liked
         .most-active
-            h1 {{ DISCOVER.MOST_ACTIVE | translate }}
+            .header
+                .title-wrapper
+                    include ../../svg/like.svg
+                    h1.title {{ 'DISCOVER.MOST_ACTIVE' | translate }}
+                tg-discover-home-order-by(on-change="vm.orderBy(type)")
             tg-most-active
     
     section.featured-projects

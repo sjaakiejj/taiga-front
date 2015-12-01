@@ -1,15 +1,9 @@
-section.highlighted
-    h1 Most active
+div
+    div(ng-if="vm.loading")
+        p loading...
 
-    tg-discover-home-order-by(on-change="vm.orderBy(type)")
+    div(tg-repeat="project in vm.highlighted track by project.get('id')")
+        h2 {{::project.get('name')}}
+        p {{::project.get('description')}}
 
-    div
-        div(ng-if="vm.loading")
-          p loading...
-
-        div(tg-repeat="project in vm.highlighted track by project.get('id')")
-            h2 {{::project.get('name')}}
-            p {{::project.get('description')}}
-
-
-        a(href="#") View more
+    a(href="#") View more

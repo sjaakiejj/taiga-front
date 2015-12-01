@@ -1,8 +1,8 @@
 div.discover-header
     div.discover-header-inner
 
-        h1.title {{ DISCOVER.DISCOVER_TITLE | translate }}
-        p.project-number {{ DISCOVER.DISCOVER_SUBTITLE | translate }}  
+        h1.title {{ 'DISCOVER.DISCOVER_TITLE' | translate }}
+        p.project-number {{ 'DISCOVER.DISCOVER_SUBTITLE' | translate }}  
 
         form
             div.searchbox
@@ -14,7 +14,7 @@ div.discover-header
                 )
                 a.search-button(
                     href=""
-                    title="{{ COMMON.SEARCH | translate }}"
+                    title="{{ 'COMMON.SEARCH' | translate }}"
                 )
                     include ../../../../svg/search.svg
             
@@ -23,19 +23,19 @@ div.discover-header
                 li(
                     ng-class="{active: vm.filter == 'all'}",
                     ng-click="vm.selectFilter('all')"
-                ) {{ DISCOVER.FILTERS.ALL | translate }}
+                ) {{ 'DISCOVER.FILTERS.ALL' | translate }}
 
                 li(
                     ng-class="{active: vm.filter == 'kanban'}",
                     ng-click="vm.selectFilter('kanban')"
-                ) {{ DISCOVER.FILTERS.KANBAN | translate }}
+                ) {{ 'DISCOVER.FILTERS.KANBAN' | translate }}
 
                 li(
                     ng-class="{active: vm.filter == 'scrum'}",
                     ng-click="vm.selectFilter('scrum')"
-                ) {{ DISCOVER.FILTERS.SCRUM | translate }}
+                ) {{ 'DISCOVER.FILTERS.SCRUM' | translate }}
 
                 li(
                     ng-class="{active: vm.filter == 'people'}",
                     ng-click="vm.selectFilter('people')"
-                ) {{ DISCOVER.FILTERS.PEOPLE | translate }}
+                ) {{ 'DISCOVER.FILTERS.PEOPLE' | translate }}
