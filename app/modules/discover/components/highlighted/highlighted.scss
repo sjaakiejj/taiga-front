@@ -6,25 +6,27 @@
     .most-liked {
         flex-basis: 45%;
     }
-    .title {
-        @extend %text;
-        @extend %larger;
-        display: inline-block;
-        margin: 0;
-    }
-    svg {
-        @include default-svg;
-        fill: $gray-light;
-        margin: .5rem;
-    }
     .header {
         align-items: center;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 1rem;
     }
     .title-wrapper {
         align-items: center;
         display: flex;
+    }
+    svg {
+        @include svg-size(1.25rem, 1.25rem);
+        fill: $gray-light;
+        margin: .5rem;
+    }
+    .title {
+        @extend %bold;
+        @extend %larger;
+        color: $grayer;
+        display: inline-block;
+        margin: 0;
     }
 }
 
