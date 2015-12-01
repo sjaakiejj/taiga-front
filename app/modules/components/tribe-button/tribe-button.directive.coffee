@@ -17,11 +17,21 @@
 # File: tribe-button.directive.coffee
 ###
 
-TribeButtonDirective = ->
+TribeButtonDirective = (configService) ->
+    link = (scope, el, attrs) ->
+
+        scope.vm = {}
+        scope.vm.tribeHost = configService.config.tribeHost
+
     return {
         scope: {usId: "=", projectId: "="}
         controllerAs: "vm",
         templateUrl: "components/tribe-button/tribe-button.html",
+        link: link
     }
+
+TribeButtonDirective.$inject = [
+    "$tgConfig"
+]
 
 angular.module("taigaComponents").directive("tgTribeButton", TribeButtonDirective)

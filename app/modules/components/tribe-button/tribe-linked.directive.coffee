@@ -14,14 +14,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: tribe-button.directive.coffee
+# File: tribe-linked.directive.coffee
 ###
 
-TribeLinkedDirective = ->
+TribeLinkedDirective = (configService) ->
     link = (scope, el, attrs) ->
 
         scope.vm = {}
-        #scope.vm.open = null
+
+        scope.vm.tribeHost = configService.config.tribeHost
 
         scope.vm.show = () ->
             scope.vm.open = true
@@ -31,10 +32,17 @@ TribeLinkedDirective = ->
 
     directive = {
         templateUrl: "components/tribe-button/tribe-linked.html",
-        scope: {gigTitle: "=", gigId: "="}
+        scope: {
+            gigTitle: "=",
+            gigId: "="
+        },
         link: link
     }
 
     return directive
+
+TribeLinkedDirective.$inject = [
+    "$tgConfig"
+]
 
 angular.module("taigaComponents").directive("tgTribeLinked", TribeLinkedDirective)

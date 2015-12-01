@@ -49,15 +49,18 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
-        "$translate"
+        "$translate",
+        "$tgConfig"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @navUrls, @analytics, @translate) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate, @configService) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
         @scope.sectionName = @translate.instant("US.SECTION_NAME")
+        @scope.tribeEnabled = @configService.config.tribeHost
+
         @.initializeEventHandlers()
 
         promise = @.loadInitialData()
