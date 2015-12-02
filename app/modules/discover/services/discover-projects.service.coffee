@@ -20,13 +20,18 @@
 taiga = @.taiga
 
 class DiscoverProjectsService extends taiga.Service
-    @.$inject = ["tgResources"]
+    @.$inject = [
+        "tgResources",
+        "tgProjectsService"
+    ]
 
-    constructor: (@rs) ->
+    constructor: (@rs, @projectsService) ->
         @._mostLiked = Immutable.List()
         @._mostActive = Immutable.List()
         @._featured = Immutable.List()
         @._searchResult = Immutable.List()
+
+        @.decorate = @projectsService._decorate.bind(@projectsService)
 
         taiga.defineImmutableProperty @, "mostLiked", () => return @._mostLiked
         taiga.defineImmutableProperty @, "mostActive", () => return @._mostActive
@@ -35,15 +40,24 @@ class DiscoverProjectsService extends taiga.Service
 
     fetchMostLiked: () ->
         return @rs.projects.getProjects()
-            .then (projects) => @._mostLiked = projects
+            .then (projects) =>
+                projects = projects.map(@decorate)
+
+                @._mostLiked = projects
 
     fetchMostActive: () ->
         return @rs.projects.getProjects()
-            .then (projects) => @._mostActive = projects
+            .then (projects) =>
+                projects = projects.map(@decorate)
+
+                @._mostActive = projects
 
     fetchFeatured: () ->
         return @rs.projects.getProjects()
-            .then (projects) => @._featured = projects
+            .then (projects) =>
+                projects = projects.map(@decorate)
+
+                @._featured = projects
 
     resetSearchList: () ->
         @._searchResult = Immutable.List()
@@ -51,6 +65,8 @@ class DiscoverProjectsService extends taiga.Service
     fetchSearch: () ->
         return @rs.projects.getProjects()
             .then (projects) =>
+                projects = projects.map(@decorate)
+
                 @._searchResult = @._searchResult.concat(projects)
 
 angular.module("taigaDiscover").service("tgDiscoverProjectsService", DiscoverProjectsService)

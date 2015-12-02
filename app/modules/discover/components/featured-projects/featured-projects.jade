@@ -5,16 +5,9 @@
         .featured-project(tg-repeat="project in vm.featured track by project.get('id')")
             .tags-container
                 .featured-tag(
-                    style="background: #cc0000"
-                    title="tag-name"
-                )
-                .featured-tag(
-                    style="background: #00cc00"
-                    title="tag-name"
-                )
-                .featured-tag(
-                    style="background: #0000cc"
-                    title="tag-name"
+                    style="background: {{tag.get('color')}}"
+                    title="{{tag.get('name')}}"
+                    tg-repeat="tag in project.get('colorized_tags') track by tag.get('name')"
                 )
             .featured-project-inner
                 .featured-project-header
