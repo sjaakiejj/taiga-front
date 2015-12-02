@@ -16,23 +16,25 @@
                     style="background: #0000cc"
                     title="tag-name"
                 )
-            .featured-project-inner        
+            .featured-project-inner
                 .featured-project-header
                     a.project-logo(
                         href="#"
-                        title="{{::project.get('name')}}"    
-                    )    
+                        tg-nav="project:project=project.get('slug')"
+                        title="{{::project.get('name')}}"
+                    )
                         img(
                             src="/#{v}/images/logo-color.png"
                             alt="{{::project.get('name')}}"
                         )
-                    h2.project-name 
+                    h2.project-name
                         a(
                             href="#"
+                            tg-nav="project:project=project.get('slug')"
                             title="{{::project.get('name')}}"
                         ) {{::project.get('name')}}
                         // ng-if="{{{::project.get('is_recruting')}}}"
-                        span.look-for-people 
+                        span.look-for-people
                             include ../../../../svg/recruit.svg
                 p.featured-project-description {{::project.get('description')}}
                 .project-statistics
