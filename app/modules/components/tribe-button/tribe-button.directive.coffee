@@ -24,7 +24,7 @@ TribeButtonDirective = (configService) ->
         scope.vm.tribeHost = configService.config.tribeHost
 
     return {
-        scope: {usId: "=", projectId: "="}
+        scope: {usId: "=", projectSlug: "="}
         controllerAs: "vm",
         templateUrl: "components/tribe-button/tribe-button.html",
         link: link
