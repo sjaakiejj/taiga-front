@@ -1,0 +1,90 @@
+.featured-projects {
+    @include centered;
+    .title {
+        @extend %bold;
+        @extend %larger;
+        color: $grayer;
+        text-align: center;
+    }
+}
+.featured-projects-inner {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.featured-project {
+    background: $white;
+    border: 1px solid $whitish;
+    border-top: 0;
+    flex-basis: 23%;
+    margin: .5rem;
+    .featured-project-description {
+        @extend %small;
+        color: $gray;
+    }
+    .project-statistics {
+        display: flex;
+        flex-basis: 140px;
+        justify-content: flex-start;
+        svg {
+            @include svg-size(.8rem);
+            fill: $gray-light;
+        }
+        .svg-eye-closed {
+            display: none;
+        }
+    }
+    .statistic {
+        @extend %small;
+        color: $gray-light;
+        display: inline-block;
+        margin-right: .5rem;
+        &.active {
+            color: $primary;
+            svg {
+                fill: $primary;
+            }
+        }
+    }
+}
+
+.tags-container {
+    display: flex;
+    height: .3rem;
+    .featured-tag {
+        flex: 1;
+    }
+}
+
+.featured-project-inner {
+    padding: 1rem;
+}
+
+.featured-project-header {
+    align-items: center;
+    display: flex;
+    .project-logo {
+        flex-basis: 75px;
+        margin: .5rem;
+    }
+    img {
+        width: 100%;
+    }
+    .project-name {
+        @extend %medium;
+        @extend %text;
+        color: $primary;
+        &:hover {
+            color: $primary-light;
+        }
+    }
+    .look-for-people {
+        svg {
+            @include svg-size(1rem);
+            fill: $gray-light;
+            margin: 0 .5rem;
+        }
+    }
+}

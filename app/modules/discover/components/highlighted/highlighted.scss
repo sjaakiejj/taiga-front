@@ -2,9 +2,10 @@
     @include centered;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 4rem;
     .most-active,
     .most-liked {
-        flex-basis: 40%;
+        flex-basis: 43%;
     }
     .header {
         align-items: center;
@@ -94,9 +95,13 @@
     .project-title {
         @extend %large;
         @extend %text;
-        display: inline;
+        display: inline-block;
+        margin-bottom: .5rem;
         a {
             color: $primary;
+            &:hover {
+                color: $primary-light;
+            }
         }
     }
     .look-for-people {
@@ -106,21 +111,33 @@
             margin-left: .5rem;
         }
     }
-    .project-statistics {
-        span {
-            @extend %small;
-            display: inline-block;
-            margin-right: .25rem;
-        }
-        svg {
-            @include svg-size(.8rem);
-            fill: $gray-light;
-            margin-right: .2rem;
-        }
-    }
     .project-description {
         @extend %small;
         color: $gray;
         margin-bottom: 0;
+    }
+    .project-statistics {
+        display: flex;
+        flex-basis: 140px;
+        justify-content: flex-end;
+        svg {
+            @include svg-size(.8rem);
+            fill: $gray-light;
+        }
+        .svg-eye-closed {
+            display: none;
+        }
+    }
+    .statistic {
+        @extend %small;
+        color: $gray-light;
+        display: inline-block;
+        margin-right: .5rem;
+        &.active {
+            color: $primary;
+            svg {
+                fill: $primary;
+            }
+        }
     }
 }

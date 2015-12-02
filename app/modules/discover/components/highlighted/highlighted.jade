@@ -3,29 +3,36 @@
         p loading...
 
     div.highlighted-project(tg-repeat="project in vm.highlighted track by project.get('id')")
-        img.project-logo(
-            src="/#{v}/images/logo-color.png"
-            alt="{{::project.get('name')}}"
-        )
+        // Add project URL
+        a(
+            href="#"
+            title="{{::project.get('name')}}"    
+        )    
+            img.project-logo(
+                src="/#{v}/images/logo-color.png"
+                alt="{{::project.get('name')}}"
+            )
         .project-data-container
             .single-project-header
                 h2.project-title 
+                    // Add project URL
                     a(
                         href="#"
                         title="{{::project.get('name')}}"    
                     ) {{::project.get('name')}}
-                    span.look-for-people
-                        include ../../../../svg/search.svg
+                    // ng-if="{{{::project.get('is_recruting')}}}"
+                    span.look-for-people 
+                        include ../../../../svg/recruit.svg
                 .project-statistics
-                    span.likers
+                    span.statistic(ng-class="{'active': project.get('is_fan')}")
                         include ../../../../svg/like.svg
-                        span 23
-                    span.watchers
+                        span {{::project.get('total_fans')}}
+                    span.statistic(ng-class="{'active': project.get('is_watcher')}")
                         include ../../../../svg/eye.svg
-                        span 11
-                    span.team
-                        include ../../../../svg/flag.svg
-                        span 232
+                        span {{::project.get('total_watchers')}}
+                    span.statistic
+                        include ../../../../svg/team.svg
+                        span.statistics-num {{ ::project.get('members').size }}
             p.project-description {{::project.get('description')}}
 
     a.view-more-projects.button-green(
