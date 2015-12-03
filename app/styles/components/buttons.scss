@@ -140,10 +140,18 @@ a.button-gray {
 
 .button-tribe {
     @extend %button;
+    align-items: center;
     background: $tribe-primary;
+    display: flex;
+    padding: .4rem;
+    padding-left: 1.5rem;
     &:hover,
     &.active {
         background: $tribe-secondary;
         color: $white;
+    }
+    .tribe-logo {
+        margin-right: .5rem;
+        width: 1.5rem;
     }
 }
