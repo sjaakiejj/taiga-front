@@ -14,16 +14,44 @@ doctype html
             h2 {{ 'DISCOVER.SEARCH.RESULTS' | translate }}
         tg-discover-search-order-by(on-change="vm.onChangeOrder()")
 
-    div(tg-repeat="project in vm.searchResult track by project.get('id')")
-        h2 {{::project.get('name')}}
-        p {{::project.get('description')}}
+    ul.project-list
+        li.list-itemtype-project(tg-repeat="project in vm.searchResult track by project.get('id')")
+            .list-itemtype-project-left
+                // Add project image
+                img.list-itemtype-project-image(
+                    src="/#{v}/images/logo-color.png"
+                    alt="{{::project.get('name')}}"
+                )
+                .list-itemtype-project-data
+                    h2 
+                        a(
+                            href="#"
+                            tg-nav="project:project=project.get('slug')"
+                            title="{{ ::project.get('name') }}"
+                        ) {{project.get('name')}}
+                        //ng-if=("project.get('recruiting')")
+                        span.looking-for-people(
+                            title="{{ 'DISCOVER.RECRUITING' | translate }}"
+                        )
+                            include ../../../svg/recruit.svg
+                    p {{ ::project.get('description') | limitTo:300 }}
+                        span(ng-if="::project.get('description').length > 300") ...
+            .list-itemtype-project-right.project-statistics
+                span.statistic(ng-class="{'active': project.get('is_fan')}")
+                    include ../../../svg/like.svg
+                    span {{::project.get('total_fans')}}
+                span.statistic(ng-class="{'active': project.get('is_watcher')}")
+                    include ../../../svg/eye.svg
+                    span {{::project.get('total_watchers')}}
+                span.statistic
+                    include ../../../svg/team.svg
+                    span.statistics-num {{ ::project.get('members').size }}
+                
+    .spin(ng-if="vm.loading")
+       img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")                    
 
-div(ng-if="vm.loading")
-  p loading
-
-p
-    a(
+    a.button-green.more-results(
         href="#"
         ng-click="vm.showMore()"
-    )
-         show more
+        ng-if="!vm.loading"
+    ) {{ 'DISCOVER.VIEW_MORE' | translate }}

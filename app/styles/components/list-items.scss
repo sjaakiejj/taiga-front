@@ -35,6 +35,9 @@
     h2 {
         @extend %large;
     }
+    .list-itemtype-project-image {
+        width: 5rem;
+    }
     .list-itemtype-project-members {
         align-self: flex-end;
         display: flex;

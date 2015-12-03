@@ -46,6 +46,64 @@
 
 .discover-results {
     @include centered;
+    .list-itemtype-project {
+        border-bottom: 1px solid $gray-light;
+        display: flex;
+        padding: 1rem 0;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    .list-itemtype-project-left {
+        align-items: flex-start;
+        display: flex;
+    }
+    .list-itemtype-project-image {
+        margin-right: 1rem;
+    }
+    .list-itemtype-project-data {
+        flex: 1;
+    }
+    .looking-for-people {
+        svg {
+            @include svg-size(1rem);
+            fill: $gray-light;
+        }
+    }
+    .project-statistics {
+        display: flex;
+        flex-basis: 140px;
+        justify-content: flex-end;
+        svg {
+            @include svg-size(.8rem);
+            fill: $gray-light;
+        }
+        .svg-eye-closed {
+            display: none;
+        }
+    }
+    .statistic {
+        @extend %small;
+        color: $gray-light;
+        display: inline-block;
+        margin-right: .5rem;
+        &.active {
+            color: $primary;
+            svg {
+                fill: $primary;
+            }
+        }
+    }
+    .more-results {
+        display: block;
+        margin: 0 20rem;
+    }
+    .spin {
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
 }
 
 .discover-results-header {
