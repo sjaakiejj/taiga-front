@@ -1437,7 +1437,15 @@
             "ALL": "All",
             "KANBAN": "Kanban",
             "SCRUM": "Scrum",
-            "PEOPLE": "Looking for people"
+            "PEOPLE": "Looking for people",
+            "WEEK": "This week",
+            "MONTH": "This month",
+            "YEAR": "This Year",
+            "ALL_TIME": "All time",
+            "CLEAR": "Clear order"
+        },
+        "SEARCH": {
+            "RESULTS": "Search results"
         }
     }
 }

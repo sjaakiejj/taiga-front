@@ -1,25 +1,29 @@
 doctype html
 
-div.centered
+.discover-search
     tg-discover-search-bar(
         filter="vm.filter",
         q="vm.q",
         on-change="vm.onChangeFilter()"
     )
 
-    div
+.discover-results
+    .discover-results-header
+        .title
+            include ../../../svg/search.svg
+            h2 {{ 'DISCOVER.SEARCH.RESULTS' | translate }}
         tg-discover-search-order-by(on-change="vm.onChangeOrder()")
 
     div(tg-repeat="project in vm.searchResult track by project.get('id')")
         h2 {{::project.get('name')}}
         p {{::project.get('description')}}
 
-    div(ng-if="vm.loading")
-      p loading
+div(ng-if="vm.loading")
+  p loading
 
-    p
-        a(
-            href="#"
-            ng-click="vm.showMore()"
-        )
-             show more
+p
+    a(
+        href="#"
+        ng-click="vm.showMore()"
+    )
+         show more
