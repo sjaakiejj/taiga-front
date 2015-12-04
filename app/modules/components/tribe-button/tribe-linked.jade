@@ -25,6 +25,6 @@
             title="{{ 'US.TRIBE.EDIT_LINK' | translate }}"
         ) {{ 'US.TRIBE.EDIT_LINK' | translate }}
         a.synchronize-link.button-tribe(
-            ng-href="{{::vm.tribeHost}}/gigs/sync/{{gigId}}"
+            ng-href="{{::vm.tribeHost}}/gigs/sync/{{gigId}}?from=taiga"
             title="{{ 'US.TRIBE.SINCHRONIZE_LINK' }}"
         ) {{ 'US.TRIBE.SYNCHRONIZE_LINK' | translate }}
