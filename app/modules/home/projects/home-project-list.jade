@@ -34,27 +34,26 @@ section.home-project-list(ng-if="vm.projects.size")
                         include ../../../svg/recruit.svg
             p.project-card-description {{::project.get('description')}}
             .project-card-statistics
-                span.statistic(ng-class="{'active': project.get('is_fan')}")
+                span.statistic(
+                    ng-class="{'active': project.get('is_fan')}"
+                    title="{{ 'PROJECT.FANS' | translate }}"
+                )
                     include ../../../svg/like.svg
                     span {{::project.get('total_fans')}}
-                span.statistic(ng-class="{'active': project.get('is_watcher')}")
+                span.statistic(
+                    ng-class="{'active': project.get('is_watcher')}"
+                    title="{{ 'PROJECT.WATCHERS' | translate }}"
+                )
                     include ../../../svg/eye.svg
                     span {{::project.get('total_watchers')}}
-                span.statistic
+                span.statistic(title="{{ 'PROJECT.TEAM' | translate }}")
                     include ../../../svg/team.svg
                     span.statistics-num {{ ::project.get('members').size }}
-
-
-    //
-        ul
-            li.home-project-list-single(tg-bind-scope, tg-repeat="project in vm.projects")
-                a(href="#", tg-nav="project:project=project.get('slug')")
-                    h2.home-project-list-single-title
-                        span.project-name(title="{{ ::project.get('name') }}") {{::project.get('name')}}
-                        span.private(ng-if="project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-                            include ../../../svg/lock.svg
-                    p {{ ::project.get('description') | limitTo:150 }}
-                        span(ng-if="::project.get('description').size > 150") ...
+                span.statistic(
+                    ng-if="::project.get('is_private')"
+                    title="{{ 'PROJECT.PRIVATE' | translate }}"
+                )
+                    include ../../../svg/lock.svg
 
     a.see-more-projects-btn.button-gray(
         href="#",

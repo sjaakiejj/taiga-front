@@ -713,6 +713,9 @@
         "SECTION_PROJECTS": "Projects",
         "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "Private project",
+        "TEAM": "Project Team",
+        "WATCHERS": "Project watchers",
+        "FANS": "Project fans",
         "STATS": {
             "PROJECT": "project<br/> points",
             "DEFINED": "defined<br/> points",

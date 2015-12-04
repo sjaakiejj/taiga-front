@@ -43,13 +43,19 @@ doctype html
                     p {{ ::project.get('description') | limitTo:300 }}
                         span(ng-if="::project.get('description').length > 300") ...
             .list-itemtype-project-right.project-statistics
-                span.statistic(ng-class="{'active': project.get('is_fan')}")
+                span.statistic(
+                    ng-class="{'active': project.get('is_fan')}"
+                    title="{{ 'PROJECT.FANS' | translate }}"
+                )
                     include ../../../svg/like.svg
                     span {{::project.get('total_fans')}}
-                span.statistic(ng-class="{'active': project.get('is_watcher')}")
+                span.statistic(
+                    ng-class="{'active': project.get('is_watcher')}"
+                    title="{{ 'PROJECT.WATCHERS' | translate }}"
+                )
                     include ../../../svg/eye.svg
                     span {{::project.get('total_watchers')}}
-                span.statistic
+                span.statistic(title="{{ 'PROJECT.TEAM' | translate }}")
                     include ../../../svg/team.svg
                     span.statistics-num {{ ::project.get('members').size }}
                 
