@@ -83,6 +83,9 @@
         height: auto;
         margin-right: 1rem;
         width: 3rem;
+        img {
+            width: 100%;
+        }
     }
     .project-data-container {
         flex: 1;

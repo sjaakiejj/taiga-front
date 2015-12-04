@@ -17,11 +17,17 @@ doctype html
     ul.project-list
         li.list-itemtype-project(tg-repeat="project in vm.searchResult track by project.get('id')")
             .list-itemtype-project-left
-                // Add project image
-                img.list-itemtype-project-image(
-                    src="/#{v}/images/logo-color.png"
-                    alt="{{::project.get('name')}}"
-                )
+                .list-itemtype-project-image
+                    img(
+                        ng-if="project.get('logo_small_url')"
+                        ng-src="project.get('logo_small_url')"
+                        alt="{{::project.get('name')}}"
+                    )
+                    img(
+                        ng-if="!project.get('logo_small_url')"
+                        src="/#{v}/images/logo-color.png"
+                        alt="{{::project.get('name')}}"
+                    )
                 .list-itemtype-project-data
                     h2 
                         a(
@@ -29,8 +35,8 @@ doctype html
                             tg-nav="project:project=project.get('slug')"
                             title="{{ ::project.get('name') }}"
                         ) {{project.get('name')}}
-                        //ng-if=("project.get('recruiting')")
-                        span.looking-for-people(
+                        span.look-for-people(
+                            ng-if="project.get('is_looking_for_people')"
                             title="{{ 'DISCOVER.RECRUITING' | translate }}"
                         )
                             include ../../../svg/recruit.svg

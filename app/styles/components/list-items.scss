@@ -36,7 +36,10 @@
         @extend %large;
     }
     .list-itemtype-project-image {
-        width: 5rem;
+        width: 3rem;
+        img {
+            width: 100%;
+        }
     }
     .list-itemtype-project-members {
         align-self: flex-end;

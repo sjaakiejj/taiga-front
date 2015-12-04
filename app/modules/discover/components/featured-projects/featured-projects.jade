@@ -17,6 +17,12 @@
                         title="{{::project.get('name')}}"
                     )
                         img(
+                            ng-if="project.get('logo_small_url')"
+                            ng-src="project.get('logo_small_url')"
+                            alt="{{::project.get('name')}}"
+                        )
+                        img(
+                            ng-if="!project.get('logo_small_url')"
                             src="/#{v}/images/logo-color.png"
                             alt="{{::project.get('name')}}"
                         )
@@ -26,8 +32,7 @@
                             tg-nav="project:project=project.get('slug')"
                             title="{{::project.get('name')}}"
                         ) {{::project.get('name')}}
-                        // ng-if="{{{::project.get('is_recruting')}}}"
-                        span.look-for-people
+                        span.look-for-people(ng-if="project.get('is_looking_for_people')")
                             include ../../../../svg/recruit.svg
                 p.featured-project-description {{::project.get('description')}}
                 .project-statistics

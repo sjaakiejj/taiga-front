@@ -3,28 +3,30 @@
         p loading...
 
     div.highlighted-project(tg-repeat="project in vm.highlighted track by project.get('id')")
-        // Add project URL
-        a(
+        a.project-logo(
             href="#"
             tg-nav="project:project=project.get('slug')"
             title="{{::project.get('name')}}"
         )
-            // Add project image
-            img.project-logo(
+            img(
+                ng-if="project.get('logo_small_url')"
+                ng-src="project.get('logo_small_url')"
+                alt="{{::project.get('name')}}"
+            )
+            img(
+                ng-if="!project.get('logo_small_url')"
                 src="/#{v}/images/logo-color.png"
                 alt="{{::project.get('name')}}"
             )
         .project-data-container
             .single-project-header
                 h2.project-title
-                    // Add project URL
                     a(
                         href="#"
                         tg-nav="project:project=project.get('slug')"
                         title="{{::project.get('name')}}"
                     ) {{::project.get('name')}}
-                    // ng-if="{{{::project.get('is_recruting')}}}"
-                    span.look-for-people
+                    span.look-for-people(ng-if="project.get('is_looking_for_people')")
                         include ../../../../svg/recruit.svg
                 .project-statistics
                     span.statistic(ng-class="{'active': project.get('is_fan')}")
