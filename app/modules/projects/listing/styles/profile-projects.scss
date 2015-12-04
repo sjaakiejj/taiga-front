@@ -8,6 +8,7 @@
             display: flex;
         }
         .list-itemtype-project-image {
+            flex-shrink: 0;
             margin-right: .5rem;
         }
         .list-itemtype-project-right {

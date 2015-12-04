@@ -1,23 +1,33 @@
 .single-project {
     .single-project-intro {
+        display: flex;
         margin-bottom: 2rem;
+    }
+    .project-logo {
+        margin-right: 1rem;
+        width: 5rem;
+        img {
+            width: 100%;
+        }
+    }
+    .single-project-title-wrapper {
+        flex: 1;
     }
     .intro-options {
         align-items: center;
         display: flex;
         justify-content: space-between;
     }
+    .intro-title {
+        align-items: center;
+        display: flex;
+    }
     h1 {
         color: $primary;
         display: inline-block;
         line-height: 1.2;
         margin-bottom: 0;
-        margin-right: 3rem;
         vertical-align: middle;
-    }
-    .private {
-        font-size: 1rem;
-        vertical-align: super;
     }
     .like-watch-container {
         margin-left: auto;

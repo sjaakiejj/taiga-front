@@ -2,45 +2,60 @@ div.wrapper
     tg-project-menu
     div.single-project.centered
         section.single-project-intro
-            div.intro-options
-                h1
-                    span.project-name {{::vm.project.get("name")}}
-                    span.private(
-                        ng-if="::vm.project.get('is_private')"
-                        title="{{'PROJECT.PRIVATE' | translate}}"
-                    )
-                        include ../../../svg/lock.svg
-
-                //- Like and wacht buttons for authenticated users
-                div.track-buttons-container(ng-if="vm.user")
-                    tg-like-project-button(project="vm.project")
-                    tg-watch-project-button(project="vm.project")
-
-                //- Like and wacht buttons for anonymous users
-                div.track-container(ng-if="!vm.user")
-                    .list-itemtype-track
-                        span.list-itemtype-track-likers(
-                            title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_fans\")||0}:'messageformat' }}"
-                        )
-                            span.icon
-                                include ../../../svg/like.svg
-                            span {{ ::vm.project.get('total_fans') }}
-
-                        span.list-itemtype-track-watchers(
-                            title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
-                        )
-                            span.icon
-                                include ../../../svg/watch.svg
-                            span {{ ::vm.project.get('total_watchers') }}
-
-            p.description {{vm.project.get('description')}}
-
-            div.single-project-tags.tags-container(ng-if="::vm.project.get('tags').size")
-                span.tag(
-                    style='border-left: 5px solid {{::tag.get("color")}};',
-                    tg-repeat="tag in ::vm.project.get('colorized_tags')"
+            .project-logo(
+                href="#"
+                tg-nav="project:project=project.get('slug')"
+                title="{{::project.get('name')}}"
+            )
+                img(
+                    ng-if="project.get('logo_small_url')"
+                    ng-src="project.get('logo_small_url')"
+                    alt="{{::project.get('name')}}"
                 )
-                    span.tag-name {{::tag.get('name')}}
+                img(
+                    ng-if="!project.get('logo_small_url')"
+                    src="/#{v}/images/logo-color.png"
+                    alt="{{::project.get('name')}}"
+                )
+            .single-project-title-wrapper
+                .intro-options
+                    .intro-title
+                        h1
+                            span.project-name {{::vm.project.get("name")}}
+                        span.private(
+                            ng-if="::vm.project.get('is_private')"
+                            title="{{'PROJECT.PRIVATE' | translate}}"
+                        )
+                            include ../../../svg/lock.svg
+
+                    div.track-buttons-container(ng-if="vm.user")
+                        tg-like-project-button(project="vm.project")
+                        tg-watch-project-button(project="vm.project")
+
+                    div.track-container(ng-if="!vm.user")
+                        .list-itemtype-track
+                            span.list-itemtype-track-likers(
+                                title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_fans\")||0}:'messageformat' }}"
+                            )
+                                span.icon
+                                    include ../../../svg/like.svg
+                                span {{ ::vm.project.get('total_fans') }}
+
+                            span.list-itemtype-track-watchers(
+                                title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
+                            )
+                                span.icon
+                                    include ../../../svg/watch.svg
+                                span {{ ::vm.project.get('total_watchers') }}
+
+                p.description {{vm.project.get('description')}}
+
+        div.single-project-tags.tags-container(ng-if="::vm.project.get('tags').size")
+            span.tag(
+                style='border-left: 5px solid {{::tag.get("color")}};',
+                tg-repeat="tag in ::vm.project.get('colorized_tags')"
+            )
+                span.tag-name {{::tag.get('name')}}
 
         div.project-data
             section.timeline(ng-if="vm.project")

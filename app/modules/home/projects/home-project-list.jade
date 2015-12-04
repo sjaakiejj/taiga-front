@@ -32,7 +32,8 @@ section.home-project-list(ng-if="vm.projects.size")
                     ) {{::project.get('name')}}
                     span.look-for-people(ng-if="project.get('is_looking_for_people')")
                         include ../../../svg/recruit.svg
-            p.project-card-description {{::project.get('description')}}
+            p.project-card-description {{::project.get('description')| limitTo:210 }}
+                 span(ng-if="::project.get('description').length > 210") ...
             .project-card-statistics
                 span.statistic(
                     ng-class="{'active': project.get('is_fan')}"
