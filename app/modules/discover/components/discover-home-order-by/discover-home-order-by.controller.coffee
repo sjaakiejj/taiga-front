@@ -18,17 +18,18 @@
 ###
 
 class DiscoverHomeOrderByController
-    @.$inject = []
+    @.$inject = [
+        '$translate'
+    ]
 
-    constructor: () ->
+    constructor: (@translate) ->
         @.is_open = false
 
-        #TODO: TRANSLATE
         @.texts = {
-            week: 'this week',
-            month: 'this month',
-            year: 'this year',
-            all: 'all time'
+            week: @translate.instant('DISCOVER.FILTERS.WEEK'),
+            month: @translate.instant('DISCOVER.FILTERS.MONTH'),
+            year: @translate.instant('DISCOVER.FILTERS.YEAR'),
+            all: @translate.instant('DISCOVER.FILTERS.ALL_TIME')
         }
 
     currentText: () ->
