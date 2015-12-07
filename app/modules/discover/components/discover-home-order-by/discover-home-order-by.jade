@@ -4,7 +4,6 @@
         ng-click="vm.toggleOpen()"
     ) {{vm.currentText()}}
         span.icon-arrow-bottom
-  
 
     ul.filter-list(ng-if="vm.is_open")
         li(ng-click="vm.orderBy('week')") {{ 'DISCOVER.FILTERS.WEEK' | translate }}

@@ -1,8 +1,8 @@
 .single-project
-    div(ng-if="vm.loading")
+    div(ng-if="loading")
         p loading...
 
-    div.highlighted-project(tg-repeat="project in vm.highlighted track by project.get('id')")
+    div.highlighted-project(tg-repeat="project in highlighted track by project.get('id')")
         a.project-logo(
             href="#"
             tg-nav="project:project=project.get('slug')"

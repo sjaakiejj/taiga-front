@@ -26,6 +26,7 @@ DiscoverHomeOrderByDirective = () ->
         bindToController: true,
         templateUrl: "discover/components/discover-home-order-by/discover-home-order-by.html",
         scope: {
+            currentOrderBy: "=orderBy",
             onChange: "&"
         },
         link: link

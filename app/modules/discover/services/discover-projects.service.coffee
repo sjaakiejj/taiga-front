@@ -38,15 +38,15 @@ class DiscoverProjectsService extends taiga.Service
         taiga.defineImmutableProperty @, "featured", () => return @._featured
         taiga.defineImmutableProperty @, "searchResult", () => return @._searchResult
 
-    fetchMostLiked: () ->
-        return @rs.projects.getProjects()
+    fetchMostLiked: (params) ->
+        return @rs.projects.getProjects(params)
             .then (projects) =>
                 projects = projects.map(@decorate)
 
                 @._mostLiked = projects
 
-    fetchMostActive: () ->
-        return @rs.projects.getProjects()
+    fetchMostActive: (params) ->
+        return @rs.projects.getProjects(params)
             .then (projects) =>
                 projects = projects.map(@decorate)
 

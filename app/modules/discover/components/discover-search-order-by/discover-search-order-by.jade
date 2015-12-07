@@ -2,15 +2,16 @@
     a.discover-search-filter(
         href="#"
         ng-click="vm.toggleOpenLike()"
-    ) 
+    )
         include ../../../../svg/like.svg
         span {{ 'DISCOVER.MOST_LIKED' | translate }}
     a.discover-search-filter(
         href="#"
         ng-click="vm.toggleOpenActivity()"
-    ) 
+    )
         include ../../../../svg/activity.svg
         span {{ 'DISCOVER.MOST_ACTIVE' | translate }}
+
 .discover-search-subfilter(ng-if="vm.like_is_open")
     .results(ng-if="vm.likeOrder")
         a(
@@ -43,7 +44,6 @@
                 href="#",
                 ng-click="vm.likeOrderBy('all')"
             ) {{ 'DISCOVER.FILTERS.ALL_TIME' | translate }}
-            
 
 .discover-search-subfilter(ng-if="vm.activity_is_open")
     .results(ng-if="vm.activityOrder")

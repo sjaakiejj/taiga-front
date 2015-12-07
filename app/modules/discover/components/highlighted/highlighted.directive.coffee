@@ -14,23 +14,18 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: most-active.controller.coffee
+# File: highlighted.directive.coffee
 ###
 
-class MostActiveController
-    @.$inject = [
-        "tgDiscoverProjectsService"
-    ]
+HighlightedDirective = () ->
+    return {
+        templateUrl: "discover/components/highlighted/highlighted.html",
+        scope: {
+            loading: "=",
+            highlighted: "="
+        }
+    }
 
-    constructor: (@discoverProjectsService) ->
-        taiga.defineImmutableProperty @, "highlighted", () => return @discoverProjectsService.mostActive
+HighlightedDirective.$inject = []
 
-        @discoverProjectsService.fetchMostActive()
-
-    orderBy: (type) ->
-        @.loading = true
-
-        @discoverProjectsService.fetchMostActive({sort_by: type}).then () =>
-            @.loading = false
-
-angular.module("taigaDiscover").controller("MostActive", MostActiveController)
+angular.module("taigaDiscover").directive("tgHighlighted", HighlightedDirective)

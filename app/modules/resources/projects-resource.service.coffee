@@ -22,10 +22,10 @@ pagination = () ->
 Resource = (urlsService, http, paginateResponseService) ->
     service = {}
 
-    service.getProjects = () ->
+    service.getProjects = (params = {}) ->
         url = urlsService.resolve("projects")
 
-        return http.get(url)
+        return http.get(url, params)
             .then (result) ->
                 return Immutable.fromJS(result.data)
 

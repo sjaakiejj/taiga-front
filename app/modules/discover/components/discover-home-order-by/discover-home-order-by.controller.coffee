@@ -22,7 +22,6 @@ class DiscoverHomeOrderByController
 
     constructor: () ->
         @.is_open = false
-        @.type = 'week'
 
         #TODO: TRANSLATE
         @.texts = {
@@ -33,7 +32,7 @@ class DiscoverHomeOrderByController
         }
 
     currentText: () ->
-        return @.texts[@.type]
+        return @.texts[@.currentOrderBy]
 
     toggleOpen: () ->
         @.is_open = true
@@ -42,9 +41,9 @@ class DiscoverHomeOrderByController
         @.is_open = false
 
     orderBy: (type) ->
-        @.type = type
+        @.currentOrderBy = type
         @.is_open = false
 
-        @.onChange({type: type})
+        @.onChange({orderBy: @.currentOrderBy})
 
 angular.module("taigaDiscover").controller("DiscoverHomeOrderBy", DiscoverHomeOrderByController)
