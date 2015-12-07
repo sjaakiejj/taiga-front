@@ -17,7 +17,7 @@
 # File: discover-home-order-by.controller.coffee
 ###
 
-class DiscoverSearchOrderByController
+class DiscoverSearchListHeaderController
     @.$inject = []
 
     constructor: () ->
@@ -48,4 +48,4 @@ class DiscoverSearchOrderByController
 
         @.onChange()
 
-angular.module("taigaDiscover").controller("DiscoverSearchOrderBy", DiscoverSearchOrderByController)
+angular.module("taigaDiscover").controller("DiscoverSearchListHeader", DiscoverSearchListHeaderController)

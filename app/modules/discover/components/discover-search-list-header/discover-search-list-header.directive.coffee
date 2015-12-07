@@ -14,17 +14,17 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: discover-search-order-by.directive.coffee
+# File: discover-search-list-header.directive.coffee
 ###
 
-DiscoverSearchOrderByDirective = () ->
+DiscoverSearchListHeaderDirective = () ->
     link = (scope, el, attrs) ->
 
     return {
-        controller: "DiscoverSearchOrderBy",
+        controller: "DiscoverSearchListHeader",
         controllerAs: "vm",
         bindToController: true,
-        templateUrl: "discover/components/discover-search-order-by/discover-search-order-by.html",
+        templateUrl: "discover/components/discover-search-list-header/discover-search-list-header.html",
         scope: {
             onChange: "&",
             activityOrder: "=",
@@ -33,6 +33,6 @@ DiscoverSearchOrderByDirective = () ->
         link: link
     }
 
-DiscoverSearchOrderByDirective.$inject = []
+DiscoverSearchListHeaderDirective.$inject = []
 
-angular.module("taigaDiscover").directive("tgDiscoverSearchOrderBy", DiscoverSearchOrderByDirective)
+angular.module("taigaDiscover").directive("tgDiscoverSearchListHeader", DiscoverSearchListHeaderDirective)

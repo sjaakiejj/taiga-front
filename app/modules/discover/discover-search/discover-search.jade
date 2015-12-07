@@ -8,11 +8,7 @@ doctype html
     )
 
 .discover-results
-    .discover-results-header
-        .title
-            include ../../../svg/search.svg
-            h2 {{ 'DISCOVER.SEARCH.RESULTS' | translate }}
-        tg-discover-search-order-by(on-change="vm.onChangeOrder()")
+    tg-discover-search-list-header(on-change="vm.onChangeOrder()")
 
     ul.project-list
         li.list-itemtype-project(tg-repeat="project in vm.searchResult track by project.get('id')")
@@ -29,7 +25,7 @@ doctype html
                         alt="{{::project.get('name')}}"
                     )
                 .list-itemtype-project-data
-                    h2 
+                    h2
                         a(
                             href="#"
                             tg-nav="project:project=project.get('slug')"
@@ -58,9 +54,9 @@ doctype html
                 span.statistic(title="{{ 'PROJECT.TEAM' | translate }}")
                     include ../../../svg/team.svg
                     span.statistics-num {{ ::project.get('members').size }}
-                
+
     .spin(ng-if="vm.loading")
-       img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")                    
+       img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
 
     a.button-green.more-results(
         href="#"
