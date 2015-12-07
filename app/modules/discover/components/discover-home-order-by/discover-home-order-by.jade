@@ -1,7 +1,7 @@
-.filter-highlighted(ng-mouseleave="vm.toggleClose()")
+.filter-highlighted(ng-mouseleave="vm.close()")
     a.current-filter(
         href="#"
-        ng-click="vm.toggleOpen()"
+        ng-click="vm.open()"
     ) {{vm.currentText()}}
         span.icon-arrow-bottom
 

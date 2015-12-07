@@ -35,10 +35,10 @@ class DiscoverHomeOrderByController
     currentText: () ->
         return @.texts[@.currentOrderBy]
 
-    toggleOpen: () ->
+    open: () ->
         @.is_open = true
 
-    toggleClose: () ->
+    close: () ->
         @.is_open = false
 
     orderBy: (type) ->
