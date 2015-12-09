@@ -1,8 +1,13 @@
-.single-project
-    div(ng-if="loading")
-        p loading...
-
-    div.highlighted-project(tg-repeat="project in highlighted track by project.get('id')")
+.highlighted-projects-container
+    img.loading-spinner(
+        src="/#{v}/svg/spinner-circle.svg",
+        alt="{{'COMMON.LOADING' | translate}}"
+        ng-if="loading"
+    )
+    div.highlighted-project(
+        tg-repeat="project in highlighted track by project.get('id')"
+        ng-if="!loading"
+    )
         a.project-logo(
             href="#"
             tg-nav="project:project=project.get('slug')"

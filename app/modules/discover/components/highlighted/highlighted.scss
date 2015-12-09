@@ -31,6 +31,12 @@
         display: inline-block;
         margin: 0;
     }
+    .loading-spinner {
+        display: block;
+        margin: 2rem auto;
+        max-height: 2rem;
+        max-width: 2rem;
+    }
     .view-more-projects {
         display: block;
         margin: 1rem 2rem 0;
