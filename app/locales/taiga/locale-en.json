@@ -448,8 +448,14 @@
             "NUMBER_US_POINTS": "Number of US points (0 for an undetermined quantity)",
             "TAGS": "Tags",
             "DESCRIPTION": "Description",
+            "RECRUITING": "This project is looking for people",
+            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Public project",
+            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Private project",
+            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
+            "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
             "DELETE": "Delete this project"
         },
         "REPORTS": {
@@ -1269,7 +1275,7 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.<br />",
+        "IMAGE_HELP": "The image will be scaled to 80x80px.",
         "ACTION_CHANGE_IMAGE": "Change",
         "ACTION_USE_GRAVATAR": "Use gravatar image",
         "ACTION_DELETE_ACCOUNT": "Delete Taiga account",
