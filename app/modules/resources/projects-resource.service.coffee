@@ -26,8 +26,6 @@ Resource = (urlsService, http, paginateResponseService) ->
         url = urlsService.resolve("projects")
 
         return http.get(url, params)
-            .then (result) ->
-                return Immutable.fromJS(result.data)
 
     service.getProjectBySlug = (projectSlug) ->
         url = urlsService.resolve("projects")

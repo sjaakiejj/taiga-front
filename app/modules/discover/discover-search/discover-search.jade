@@ -4,7 +4,7 @@ doctype html
     tg-discover-search-bar(
         filter="vm.filter",
         q="vm.q",
-        on-change="vm.onChangeFilter()"
+        on-change="vm.onChangeFilter(filter)"
     )
 
 .discover-results
@@ -61,5 +61,5 @@ doctype html
     a.button-green.more-results(
         href="#"
         ng-click="vm.showMore()"
-        ng-if="!vm.loading"
+        ng-if="!vm.loading && vm.nextSearchPage"
     ) {{ 'DISCOVER.VIEW_MORE' | translate }}

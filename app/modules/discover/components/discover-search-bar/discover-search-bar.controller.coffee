@@ -25,8 +25,6 @@ class DiscoverSearchBarController
         @.projects = '70k'
 
     selectFilter: (filter) ->
-        @.filter = filter
-
-        @.onChange()
+        @.onChange({filter: filter})
 
 angular.module("taigaDiscover").controller("DiscoverSearchBar", DiscoverSearchBarController)

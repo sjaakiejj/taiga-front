@@ -24,11 +24,12 @@ class DiscoverSearchController
     ]
 
     constructor: (@routeParams, @discoverProjectsService) ->
-        @.page = 0
+        @.page = 1
         @.likeOrder = null
         @.activityOrder = null
 
         taiga.defineImmutableProperty @, "searchResult", () => return @discoverProjectsService.searchResult
+        taiga.defineImmutableProperty @, "nextSearchPage", () => return @discoverProjectsService.nextSearchPage
 
         @.q = @routeParams.text
         @.filter = @routeParams.filter || 'all'
@@ -41,7 +42,6 @@ class DiscoverSearchController
         @discoverProjectsService.resetSearchList()
 
         @.loading = true
-        @.page = 0
 
         return @.search().then () =>
             @.loading = false
@@ -50,21 +50,39 @@ class DiscoverSearchController
         return if @.loading
 
         @.loading = true
+        @.page++
 
         return @.search().then () =>
             @.loading = false
-            @.page++
 
     search: () ->
-        return @discoverProjectsService.fetchSearch({
-            search: @.search,
+        filter = @.getFilter()
+
+        params = {
             page: @.page,
-            filter: @.filter,
+            q: @.q,
             likeOrder: @.likeOrder,
             activityOrder: @.activityOrder
-        })
+        }
 
-    onChangeFilter: () ->
+        _.assign(params, filter)
+
+        return @discoverProjectsService.fetchSearch(params)
+
+    getFilter: () ->
+        if @.filter == 'people'
+            return {is_looking_for_people: true}
+        else if @.filter == 'scrum'
+            return {is_backlog_activated: true}
+        else if @.filter == 'kanban'
+            return {is_kanban_activated: true}
+
+        return {}
+
+    onChangeFilter: (filter) ->
+        console.log "change", filter
+        @.filter = filter
+
         @.fetch()
 
     onChangeOrder: () ->
