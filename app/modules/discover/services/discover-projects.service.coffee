@@ -41,21 +41,25 @@ class DiscoverProjectsService extends taiga.Service
 
     fetchMostLiked: (params) ->
         return @rs.projects.getProjects(params)
-            .then (projects) =>
+            .then (result) =>
+                projects = Immutable.fromJS(result.data)
                 projects = projects.map(@decorate)
 
                 @._mostLiked = projects
 
     fetchMostActive: (params) ->
         return @rs.projects.getProjects(params)
-            .then (projects) =>
+            .then (result) =>
+                projects = Immutable.fromJS(result.data)
                 projects = projects.map(@decorate)
 
                 @._mostActive = projects
 
     fetchFeatured: () ->
         return @rs.projects.getProjects()
-            .then (projects) =>
+            .then (result) =>
+
+                projects = Immutable.fromJS(result.data)
                 projects = projects.map(@decorate)
 
                 @._featured = projects
