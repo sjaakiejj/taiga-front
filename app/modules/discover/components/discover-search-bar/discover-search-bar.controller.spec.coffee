@@ -14,21 +14,27 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: most-active.directive.coffee
+# File: doscover-search-bar.controller.spec.coffee
 ###
 
-MostActiveDirective = () ->
-    link = (scope, el, attrs, ctrl) ->
-        ctrl.fetch()
+describe.only "DiscoverSearchBarController", ->
+    $provide = null
+    $controller = null
+    mocks = {}
 
-    return {
-        controller: "MostActive"
-        controllerAs: "vm",
-        templateUrl: "discover/components/most-active/most-active.html",
-        scope: {},
-        link: link
-    }
+    _inject = ->
+        inject (_$controller_) ->
+            $controller = _$controller_
 
-MostActiveDirective.$inject = []
+    _setup = ->
+        _inject()
 
-angular.module("taigaDiscover").directive("tgMostActive", MostActiveDirective)
+    beforeEach ->
+        module "taigaDiscover"
+
+        _setup()
+
+    it "select filter", () ->
+        ctrl = $controller("DiscoverSearchBar")
+
+        ctrl.selectFilter('text')

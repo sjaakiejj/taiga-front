@@ -14,10 +14,10 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: doscover-home-order-by.controller.spec.coffee
+# File: discover-home-order-by.controller.spec.coffee
 ###
 
-describe.only "DiscoverHomeOrderBy", ->
+describe "DiscoverHomeOrderBy", ->
     $provide = null
     $controller = null
     mocks = {}

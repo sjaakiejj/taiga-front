@@ -27,14 +27,12 @@ class MostActiveController
 
         @.currentOrderBy = 'week'
 
-        @.fetch()
-
     fetch: () ->
         @.loading = true
 
         order_by = @.getOrderBy()
 
-        @discoverProjectsService.fetchMostActive({order_by: order_by}).then () =>
+        return @discoverProjectsService.fetchMostActive({order_by: order_by}).then () =>
             @.loading = false
 
     orderBy: (type) ->
