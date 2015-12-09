@@ -28,6 +28,9 @@
         &:focus {
             outline-color: $primary-light;
         }
+        &::-webkit-autofill {
+            background: rgba($primary-dark, .5);
+        }
     }
     .search-button {
         position: absolute;

@@ -26,7 +26,10 @@
                         tg-nav="project:project=project.get('slug')"
                         title="{{::project.get('name')}}"
                     ) {{::project.get('name')}}
-                    span.look-for-people(ng-if="project.get('is_looking_for_people')")
+                    span.look-for-people(
+                        ng-if="project.get('is_looking_for_people')"
+                        title="{{ ::project.get('looking_for_people_note') }}"
+                    )
                         include ../../../../svg/recruit.svg
                 .project-statistics
                     span.statistic(
