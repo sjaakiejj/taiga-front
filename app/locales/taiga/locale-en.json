@@ -1440,7 +1440,9 @@
         "DISCOVER_TITLE": "Discover projects",
         "DISCOVER_SUBTITLE": "More than {{vm.projects}} projects to discover",
         "MOST_ACTIVE": "Most active",
+        "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
         "MOST_LIKED": "Most liked",
+        "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
         "VIEW_MORE": "View more",
         "RECRUITING": "This project is looking for people",
         "FILTERS": {

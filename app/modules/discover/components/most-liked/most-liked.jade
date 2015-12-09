@@ -1,4 +1,4 @@
-.most-liked
+.most-liked(ng-if="vm.highlighted.size")
     .header
         .title-wrapper
             include ../../../../svg/like.svg
@@ -8,3 +8,9 @@
         loading="vm.loading",
         highlighted="vm.highlighted"
     )
+
+.empty-highlighted-project(
+    ng-if="!vm.highlighted.size"
+)
+    include ../../../../svg/like.svg
+    span {{ 'DISCOVER.MOST_LIKED_EMPTY' | translate }}

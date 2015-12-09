@@ -1,4 +1,4 @@
-.most-active
+.most-active(ng-if="vm.highlighted.size")
     .header
         .title-wrapper
             include ../../../../svg/activity.svg
@@ -7,4 +7,11 @@
     tg-highlighted(
         loading="vm.loading",
         highlighted="vm.highlighted"
+        ng-if="vm.highlighted"
     )
+
+.empty-highlighted-project(
+    ng-if="!vm.highlighted.size"
+)
+    include ../../../../svg/activity.svg
+    span {{ 'DISCOVER.MOST_ACTIVE_EMPTY' | translate }}

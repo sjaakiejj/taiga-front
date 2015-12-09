@@ -41,6 +41,22 @@
         display: block;
         margin: 1rem 2rem 0;
     }
+    .empty-highlighted-project {
+        border: 2px dashed $whitish;
+        padding: 2rem;
+        text-align: center;
+        svg {
+            @include svg-size(2rem);
+            display: block;
+            fill: $gray-light;
+            margin: 1rem auto;
+        }
+        span {
+            @extend %light;
+            color: $gray;
+            display: block;
+        }
+    }
 }
 
 .filter-highlighted {

@@ -55,5 +55,6 @@
             p.project-description {{::project.get('description')}}
 
     a.view-more-projects.button-green(
+        ng-if="vm.highlighted"
         href="#"
     ) {{ 'DISCOVER.VIEW_MORE' | translate }}
