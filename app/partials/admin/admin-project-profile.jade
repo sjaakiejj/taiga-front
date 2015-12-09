@@ -60,31 +60,6 @@ div.wrapper(
                         data-required="true"
                         maxlength="45"
                     )
-                
-                //-
-                    fieldset
-                        label(for="project-sprints") {{ 'ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS' | translate }}
-                        input(
-                            type="number"
-                            name="total_milestones"
-                            min="0"
-                            placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_SPRINTS' | translate}}"
-                            id="project-sprints"
-                            ng-model="project.total_milestones"
-                            data-type="digits"
-                        )
-
-                    fieldset
-                        label(for="total-story-points") {{ 'ADMIN.PROJECT_PROFILE.NUMBER_US_POINTS' | translate }}
-                        input(
-                            type="number"
-                            name="total_story_points"
-                            min="0"
-                            placeholder="{{'ADMIN.PROJECT_PROFILE.NUMBER_US_POINTS' | translate}}"
-                            id="total-story-points"
-                            ng-model="project.total_story_points"
-                            data-type="digits"
-                        )
 
                 fieldset
                     label(for="project-description") {{ 'ADMIN.PROJECT_PROFILE.DESCRIPTION' | translate }}
@@ -107,7 +82,7 @@ div.wrapper(
                     .looking-for-people-selector
                         span {{ 'ADMIN.PROJECT_PROFILE.RECRUITING' | translate }}
                         span(
-                            title="{{ 'ADMIN.PROJECT_PROFILE.RECRUITING' | translate }}"
+                            title="{{ 'ADMIN.PROJECT_PROFILE.RECRUITING_MESSAGE' | translate }}"
                         )
                             include ../../svg/recruit.svg
                         div.check
@@ -124,39 +99,43 @@ div.wrapper(
                             placeholder="{{ 'ADMIN.PROJECT_PROFILE.RECRUITING_PLACEHOLDER' | translate }}"
                         )
 
-                .project-privacy-settings
-                    a(
+                fieldset
+                    .project-privacy-settings
+                        div.privacy-option
+                            input.privacy-project(
+                                type="radio"
+                                id="private-project"
+                                name="privacy-project"
+                                ng-model="project.is_private"
+                                ng-value="false"
+                            )
+                            label.trans-button(for="private-project") {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
+                                span(title="{{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT_DESC' | translate }}")
+                                    include ../../svg/help.svg
+                            input.public-project-url(
+                                type="text"
+                                readonly="readonly"
+                                ng-model="project.slug"
+                            )
+                        div.privacy-option
+                            input.privacy-project(
+                                type="radio"
+                                id="public-project"
+                                name="privacy-project"
+                                ng-model="project.is_private"
+                                ng-value="true"
+                            )
+                            label.trans-button(for="public-project") {{'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT' | translate }}
+                                span(title="{{ 'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT_DESC' | translate }}")
+                                    include ../../svg/help.svg
+
+                    a.private-or-public(
                         href="https://taiga.io/support/whats-the-difference-between-public-and-private-projects/"
                         target="_blank"
-                    ) {{'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}
-                    div.privacy-option
-                        input.privacy-project(
-                            type="radio"
-                            id="private-project"
-                            name="privacy-project"
-                            ng-model="project.is_private"
-                            ng-value="false"
-                        )
-                        label.trans-button(for="private-project") {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
-                            span(title="{{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT_DESC' | translate }}")
-                                include ../../svg/check.svg
-                        input.public-project-url(
-                            type="text"
-                            readonly
-                            ng-model="project.slug"
-                        )
-                    div.privacy-option
-                        input.privacy-project(
-                            type="radio"
-                            id="public-project"
-                            name="privacy-project"
-                            ng-model="project.is_private"
-                            ng-value="true"
-                        )
-                        label.trans-button(for="public-project") {{'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT' | translate }}
-                            span(title="{{ 'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT_DESC' | translate }}")
-                                include ../../svg/check.svg
-
+                    ) 
+                        span(title="{{ 'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}")
+                            include ../../svg/help.svg
+                        span {{'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}
                 button.button-green.submit-button(
                     type="submit"
                     title="{{'COMMON.SAVE' | translate}}"
