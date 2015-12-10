@@ -131,6 +131,9 @@ $dropdown-width: 350px;
         margin: 0;
         margin-bottom: .5rem;
         padding: 0;
+        &:after {
+            left: 90%;
+        }
     }
     a {
         color: $gray-light;

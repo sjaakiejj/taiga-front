@@ -109,24 +109,6 @@
     }
 }
 
-.discover-results-header {
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-between;
-    svg {
-        @include svg-size(1.1rem);
-        fill: $gray-light;
-    }
-    .title {
-        @extend %bold;
-        @extend %larger;
-        text-transform: uppercase;
-    }
-    h2 {
-        display: inline-block;
-    }
-}
-
 .empty-discover-results {
     @include centered;
     margin-top: 4rem;

@@ -1,23 +1,24 @@
 .discover-results-header
-    .title
-        include ../../../../svg/search.svg
-        h2 {{ 'DISCOVER.SEARCH.RESULTS' | translate }}
+    .discover-results-header-inner
+        .title
+            include ../../../../svg/search.svg
+            h2 {{ 'DISCOVER.SEARCH.RESULTS' | translate }}
 
-    .filter-discover-search(ng-mouseleave="vm.toggleClose()")
-        a.discover-search-filter(
-            href="#"
-            ng-click="vm.toggleOpenLike()"
-        )
-            include ../../../../svg/like.svg
-            span {{ 'DISCOVER.MOST_LIKED' | translate }}
-        a.discover-search-filter(
-            href="#"
-            ng-click="vm.toggleOpenActivity()"
-        )
-            include ../../../../svg/activity.svg
-            span {{ 'DISCOVER.MOST_ACTIVE' | translate }}
+        .filter-discover-search(ng-mouseleave="vm.toggleClose()")
+            a.discover-search-filter(
+                href="#"
+                ng-click="vm.toggleOpenLike()"
+            )
+                include ../../../../svg/like.svg
+                span {{ 'DISCOVER.MOST_LIKED' | translate }}
+            a.discover-search-filter(
+                href="#"
+                ng-click="vm.toggleOpenActivity()"
+            )
+                include ../../../../svg/activity.svg
+                span {{ 'DISCOVER.MOST_ACTIVE' | translate }}
 
-    .discover-search-subfilter(ng-if="vm.like_is_open")
+    .discover-search-subfilter.most-liked-subfilter(ng-if="vm.like_is_open")
         .results(ng-if="vm.likeOrder")
             a(
                 title=""
@@ -51,7 +52,7 @@
                     ng-click="vm.likeOrderBy('all')"
                 ) {{ 'DISCOVER.FILTERS.ALL_TIME' | translate }}
 
-      .discover-search-subfilter(ng-if="vm.activity_is_open")
+      .discover-search-subfilter.most-active-subfilter(ng-if="vm.activity_is_open")
           .results(ng-if="vm.activityOrder")
               a(
                   title=""
