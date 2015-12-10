@@ -1,5 +1,5 @@
-.featured-projects
-    h1.title Featured projects
+.featured-projects(ng-if="vm.featured.size")
+    h1.title {{ 'DISCOVER.FEATURED' | translate }}
 
     .featured-projects-inner
         .featured-project(tg-repeat="project in vm.featured track by project.get('id')")

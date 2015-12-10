@@ -1445,6 +1445,7 @@
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
         "VIEW_MORE": "View more",
         "RECRUITING": "This project is looking for people",
+        "FEATURED": "Featured Projects",
         "FILTERS": {
             "ALL": "All",
             "KANBAN": "Kanban",
