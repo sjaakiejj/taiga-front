@@ -64,8 +64,10 @@
     }
     .list-itemtype-project-data {
         flex: 1;
+        vertical-align: middle;
     }
-    .looking-for-people {
+    .look-for-people {
+        margin-left: .5rem;
         svg {
             @include svg-size(1rem);
             fill: $gray-light;
