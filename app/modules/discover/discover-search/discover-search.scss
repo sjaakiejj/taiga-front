@@ -124,3 +124,18 @@
         display: inline-block;
     }
 }
+
+.empty-discover-results {
+    @include centered;
+    margin-top: 4rem;
+    text-align: center;
+    img {
+        margin-bottom: 1rem;
+    }
+    .title {
+        @extend %large;
+        @extend %light;
+        margin: 0;
+        text-transform: uppercase;
+    }
+}

@@ -1446,6 +1446,7 @@
         "VIEW_MORE": "View more",
         "RECRUITING": "This project is looking for people",
         "FEATURED": "Featured Projects",
+        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
         "FILTERS": {
             "ALL": "All",
             "KANBAN": "Kanban",

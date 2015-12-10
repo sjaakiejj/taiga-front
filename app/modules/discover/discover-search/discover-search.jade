@@ -7,7 +7,14 @@ doctype html
         on-change="vm.onChangeFilter(filter)"
     )
 
-.discover-results
+.empty-discover-results(ng-if="!vm.searchResult.size")
+    img(
+        src="/#{v}/images/issues-empty.png",
+        alt="{{ DISCOVER.EMPTY | translate }}"
+    )
+    p.title(translate="DISCOVER.EMPTY")
+
+.discover-results(ng-if="vm.searchResult.size")
     tg-discover-search-list-header(on-change="vm.onChangeOrder()")
 
     ul.project-list
