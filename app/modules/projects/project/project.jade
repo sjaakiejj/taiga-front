@@ -62,6 +62,13 @@ div.wrapper
                 div(tg-user-timeline, projectId="vm.project.get('id')")
 
             section.involved-data
+                .looking-for-people(ng-if="vm.project.get('is_looking_for_people')")
+                    img(
+                        src="/#{v}/images/logo-color.png"
+                        title="{{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}"
+                    )
+                    h3 {{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}
+                    p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}"
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team
                     li(tg-repeat="member in vm.members")
@@ -70,11 +77,3 @@ div.wrapper
                             title="{{::member.get('full_name')}}"
                         )
                             img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
-            //-
-                h2.title Organizations
-                div.involved-organization
-                     a(href="", title="User Name")
-                        img(
-                             src="https://s3.amazonaws.com/uifaces/faces/twitter/dan_higham/48.jpg"
-                             alt="{{member.full_name}}"
-                        )
