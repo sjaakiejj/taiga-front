@@ -1,13 +1,23 @@
 .list-itemtype-project
-    .list-itemtype-project-data
-        h2
-            a(
-                href="#"
-                tg-nav="project:project=vm.item.get('slug')"
-                title="{{ ::vm.item.get('name') }}"
-            ) {{ ::vm.item.get('name') }}
-            span.private(ng-if="::project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
-        p {{ ::vm.item.get('description') }}
+    .list-itemtype-project-left
+        .list-itemtype-project-data-wrapper
+        
+            .list-itemtype-project-image
+                img(
+                    ng-if="!item.get('logo_small_url')"
+                    ng-src="item.get('logo_small_url')"
+                    title="{{ ::vm.item.get('name') }}"
+                )
+        
+            .list-itemtype-project-data
+                h2
+                    a(
+                        href="#"
+                        tg-nav="project:project=vm.item.get('slug')"
+                        title="{{ ::vm.item.get('name') }}"
+                    ) {{ ::vm.item.get('name') }}
+                    span.private(ng-if="::project.get('is_private')", title="{{'PROJECT.PRIVATE' | translate}}")
+                p {{ ::vm.item.get('description') }}
 
         .list-itemtype-project-tags.tags-container(ng-if="::vm.item.get('tags_colors').size")
             span.tag(

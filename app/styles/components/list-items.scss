@@ -35,6 +35,9 @@
     h2 {
         @extend %large;
     }
+    .list-itemtype-project-data-wrapper {
+        display: flex;
+    }
     .list-itemtype-project-image {
         flex-shrink: 0;
         width: 3rem;
