@@ -42,8 +42,8 @@ class MostActiveController
 
     getOrderBy: (type) ->
         if @.currentOrderBy == 'all'
-            return 'total_activity'
+            return '-total_activity'
         else
-            return 'total_activity_last_' + @.currentOrderBy
+            return '-total_activity_last_' + @.currentOrderBy
 
 angular.module("taigaDiscover").controller("MostActive", MostActiveController)

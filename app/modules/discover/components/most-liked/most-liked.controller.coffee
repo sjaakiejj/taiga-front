@@ -45,8 +45,8 @@ class MostLikedController
 
     getOrderBy: (type) ->
         if @.currentOrderBy == 'all'
-            return 'total_fans'
+            return '-total_fans'
         else
-            return 'total_fans_last_' + @.currentOrderBy
+            return '-total_fans_last_' + @.currentOrderBy
 
 angular.module("taigaDiscover").controller("MostLiked", MostLikedController)
