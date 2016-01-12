@@ -45,7 +45,7 @@ class DiscoverProjectsService extends taiga.Service
         return @rs.projects.getProjects(params)
             .then (result) =>
                 projects = Immutable.fromJS(result.data)
-                projects = projects.map(@decorate)
+                projects = projects.map(@.decorate)
 
                 @._mostLiked = projects
 
@@ -53,16 +53,15 @@ class DiscoverProjectsService extends taiga.Service
         return @rs.projects.getProjects(params)
             .then (result) =>
                 projects = Immutable.fromJS(result.data)
-                projects = projects.map(@decorate)
+                projects = projects.map(@.decorate)
 
                 @._mostActive = projects
 
     fetchFeatured: () ->
         return @rs.projects.getProjects()
             .then (result) =>
-
                 projects = Immutable.fromJS(result.data)
-                projects = projects.map(@decorate)
+                projects = projects.map(@.decorate)
 
                 @._featured = projects
 
@@ -79,7 +78,7 @@ class DiscoverProjectsService extends taiga.Service
                 @._nextSearchPage = !!result.headers('X-Pagination-Next')
 
                 projects = Immutable.fromJS(result.data)
-                projects = projects.map(@decorate)
+                projects = projects.map(@.decorate)
 
                 @._searchResult = @._searchResult.concat(projects)
 
