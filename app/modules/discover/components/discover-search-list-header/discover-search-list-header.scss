@@ -32,14 +32,14 @@
     justify-content: space-between;
     position: relative;
     &.most-liked-subfilter {
-        &:after,
-        &:before {
+        &::after,
+        &::before {
             left: 85%;
         }
     }
     &.most-active-subfilter {
-        &:after,
-        &:before {
+        &::after,
+        &::before {
             left: 95%;
         }
     }

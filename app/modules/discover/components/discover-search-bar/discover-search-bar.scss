@@ -28,7 +28,7 @@
         &:focus {
             outline-color: $primary-light;
         }
-        &::-webkit-autofill {
+        &:-webkit-autofill {
             background: rgba($primary-dark, .5);
         }
     }
