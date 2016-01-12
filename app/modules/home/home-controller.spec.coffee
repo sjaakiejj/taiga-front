@@ -17,7 +17,7 @@
 # File: home.controller.spec.coffee
 ###
 
-describe.only "HomeController", ->
+describe "HomeController", ->
     homeCtrl =  null
     provide = null
     controller = null

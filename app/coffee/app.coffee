@@ -66,9 +66,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/",
         {
             templateUrl: "home/home.html",
-            access: {
-                requiresLogin: true
-            },
+            controller: "Home",
+            controllerAs: "vm"
             loader: true,
             title: "HOME.PAGE_TITLE",
             loader: true,
