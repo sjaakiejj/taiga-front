@@ -2,7 +2,12 @@ div.discover-header
     div.discover-header-inner
 
         h1.title {{ 'DISCOVER.DISCOVER_TITLE' | translate }}
-        p.project-number {{ 'DISCOVER.DISCOVER_SUBTITLE' | translate }}  
+
+        p.project-number(
+            ng-if="vm.projects",
+            translate="DISCOVER.DISCOVER_SUBTITLE",
+            translate-values="{ projects: '{{vm.projects}}'}"
+        )
 
         form
             div.searchbox
@@ -18,20 +23,20 @@ div.discover-header
                     title="{{ 'COMMON.SEARCH' | translate }}"
                 )
                     include ../../../../svg/search.svg
-            
+
 
             fieldset.searchbox-filters(ng-if="vm.filter")
                 input(
                     type='radio'
                     id="filter-all"
                     name="filter-search"
-                    ) 
+                    )
                 label(
                     for="filter-all"
                     ng-click="vm.selectFilter('all')"
                     ng-class="{active: vm.filter == 'all'}",
                 ) {{ 'DISCOVER.FILTERS.ALL' | translate }}
-                
+
                 input(
                     type='radio'
                     id="filter-kanban"
@@ -42,7 +47,7 @@ div.discover-header
                     ng-class="{active: vm.filter == 'kanban'}",
                     ng-click="vm.selectFilter('kanban')"
                 ) {{ 'DISCOVER.FILTERS.KANBAN' | translate }}
-                
+
                 input(
                     type='radio'
                     id="filter-scrum"
@@ -53,7 +58,7 @@ div.discover-header
                     ng-class="{active: vm.filter == 'scrum'}",
                     ng-click="vm.selectFilter('scrum')"
                 ) {{ 'DISCOVER.FILTERS.SCRUM' | translate }}
-                
+
                 input(
                     type='radio'
                     id="filter-people"

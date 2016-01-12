@@ -14,20 +14,21 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: discover-search-bar.controller.coffee
+# File: stats-resource.service.coffee
 ###
 
-class DiscoverSearchBarController
-    @.$inject = [
-        'tgDiscoverProjectsService'
-    ]
+Resource = (urlsService, http) ->
+    service = {}
 
-    constructor: (@discoverProjectsService) ->
-        taiga.defineImmutableProperty @, 'projects', () => return @discoverProjectsService.projectsCount
+    service.discover = (applicationId, state) ->
+        url = urlsService.resolve("stats-discover")
+        return http.get(url).then (result) ->
+            Immutable.fromJS(result.data)
 
-        @discoverProjectsService.fetchStats()
+    return () ->
+        return {"stats": service}
 
-    selectFilter: (filter) ->
-        @.onChange({filter: filter})
+Resource.$inject = ["$tgUrls", "$tgHttp"]
 
-angular.module("taigaDiscover").controller("DiscoverSearchBar", DiscoverSearchBarController)
+module = angular.module("taigaResources2")
+module.factory("tgStatsResource", Resource)

@@ -17,7 +17,7 @@
 # File: discover-home-order-by.controller.spec.coffee
 ###
 
-describe.only "MostActive", ->
+describe "MostActive", ->
     $provide = null
     $controller = null
     mocks = {}

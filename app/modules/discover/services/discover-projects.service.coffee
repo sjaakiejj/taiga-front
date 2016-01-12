@@ -30,6 +30,7 @@ class DiscoverProjectsService extends taiga.Service
         @._mostActive = Immutable.List()
         @._featured = Immutable.List()
         @._searchResult = Immutable.List()
+        @._projectsCount = 0
 
         @.decorate = @projectsService._decorate.bind(@projectsService)
 
@@ -38,6 +39,7 @@ class DiscoverProjectsService extends taiga.Service
         taiga.defineImmutableProperty @, "featured", () => return @._featured
         taiga.defineImmutableProperty @, "searchResult", () => return @._searchResult
         taiga.defineImmutableProperty @, "nextSearchPage", () => return @._nextSearchPage
+        taiga.defineImmutableProperty @, "projectsCount", () => return @._projectsCount
 
     fetchMostLiked: (params) ->
         return @rs.projects.getProjects(params)
@@ -66,6 +68,10 @@ class DiscoverProjectsService extends taiga.Service
 
     resetSearchList: () ->
         @._searchResult = Immutable.List()
+
+    fetchStats: () ->
+        return @rs.stats.discover().then (discover) =>
+            @._projectsCount = discover.getIn(['projects', 'total'])
 
     fetchSearch: (params) ->
         return @rs.projects.getProjects(params)
