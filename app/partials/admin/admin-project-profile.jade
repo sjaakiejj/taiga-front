@@ -16,9 +16,9 @@ div.wrapper(
     section.main.project-details
         header
             include ../includes/components/mainTitle
-            
+
         form
-        
+
             .project-details-image
                 fieldset.image-container(tg-user-avatar)
                     img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
@@ -40,15 +40,15 @@ div.wrapper(
                     href="#"
                     title="{{'USER_PROFILE.CHANGE_PHOTO' | translate}}"
                 ) {{'USER_PROFILE.CHANGE_PHOTO' | translate}}
-                
+
                 a.use-gravatar(
                     href="#"
                     title="{{ 'USER_PROFILE.ACTION_USE_GRAVATAR' | translate }}"
                 ) {{ 'USER_PROFILE.ACTION_USE_GRAVATAR' | translate }}
-                    
-            
+
+
             .project-details-form-data
-            
+
                 fieldset
                     label(for="project-name") {{ 'ADMIN.PROJECT_PROFILE.PROJECT_NAME' | translate }}
                     input(
@@ -70,7 +70,7 @@ div.wrapper(
                         ng-model="project.description"
                         data-required="true"
                     )
-                    
+
                 fieldset
                     label(for="tags") {{ 'ADMIN.PROJECT_PROFILE.TAGS' | translate }}
                     div.tags-block(
@@ -86,16 +86,20 @@ div.wrapper(
                         )
                             include ../../svg/recruit.svg
                         div.check
-                            input(type="checkbox")
+                            input(
+                                type="checkbox",
+                                ng-model="project.is_looking_for_people"
+                            )
                             div
                             span.check-text.check-yes(translate="COMMON.YES")
                             span.check-text.check-no(translate="COMMON.NO")
-                    //-Only show if recruiting is enabled 
-                    .looking-for-people-reason
+
+                    .looking-for-people-reason(ng-show="project.is_looking_for_people")
                         label {{ 'ADMIN.PROJECT_PROFILE.RECRUITING_MESSAGE' | translate }}
                         input(
                             type="text"
                             maxlength="200"
+                            ng-model="project.looking_for_people_note"
                             placeholder="{{ 'ADMIN.PROJECT_PROFILE.RECRUITING_PLACEHOLDER' | translate }}"
                         )
 
@@ -132,7 +136,7 @@ div.wrapper(
                     a.private-or-public(
                         href="https://taiga.io/support/whats-the-difference-between-public-and-private-projects/"
                         target="_blank"
-                    ) 
+                    )
                         span(title="{{ 'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}")
                             include ../../svg/help.svg
                         span {{'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}

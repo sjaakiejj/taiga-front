@@ -21,12 +21,14 @@
         }
     }
     .looking-for-people-reason {
-        animation: formSlide .3s reverse;
-        display: none;
+        display: block;
         margin-top: 1rem;
-        &.active {
-            animation: formSlide .3s;
-        }
+        //&.ng-hide-remove-active {
+        //    animation: formSlide .4s ease-in-out;
+        //}
+        //&.ng-hide-add-active {
+        //    animation: formSlide .3s reverse;
+        //}
     }
 
     .delete-project {
