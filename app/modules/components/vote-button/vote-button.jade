@@ -9,7 +9,8 @@ a.vote-inner(
     ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )
     span.track-icon
-        include ../../../svg/upvote.svg
+        svg.icon.icon-upvote
+            use(xlink:href="#icon-upvote")
     span.track-button-counter(
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}",
         tg-loading="vm.loading"
@@ -19,7 +20,8 @@ a.vote-inner(
 
 span.vote-inner(ng-if="::!vm.user")
     span.track-icon
-        include ../../../svg/upvote.svg
+        svg.icon.icon-upvote
+            use(xlink:href="#icon-upvote")
     span.track-button-counter(
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}"
     ) {{ ::vm.item.total_voters }}
