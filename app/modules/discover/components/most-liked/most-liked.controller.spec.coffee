@@ -14,17 +14,17 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: most-active.controller.spec.coffee
+# File: most-liked.controller.spec.coffee
 ###
 
-describe "MostActive", ->
+describe "MostLiked", ->
     $provide = null
     $controller = null
     mocks = {}
 
     _mockDiscoverProjectsService = ->
         mocks.discoverProjectsService = {
-            fetchMostActive: sinon.stub()
+            fetchMostLiked: sinon.stub()
         }
 
         $provide.value("tgDiscoverProjectsService", mocks.discoverProjectsService)
@@ -50,30 +50,40 @@ describe "MostActive", ->
 
         _setup()
 
-    it "fetch", (done) ->
-        ctrl = $controller("MostActive")
+    it "fetch", () ->
+        ctrl = $controller("MostLiked")
 
-        ctrl.getOrderBy = sinon.stub().returns('week')
+        ctrl.getOrderBy = sinon.stub().returns('order1')
 
-        mockPromise = mocks.discoverProjectsService.fetchMostActive.withArgs({order_by: 'week'}).promise()
+        ctrl.fetch()
 
-        promise = ctrl.fetch()
-
-        expect(ctrl.loading).to.be.true
-
-        mockPromise.resolve()
-
-        promise.finally () ->
-            expect(ctrl.loading).to.be.false
-            done()
-
+        expect(mocks.discoverProjectsService.fetchMostLiked).to.have.been.calledWith(sinon.match({order_by: 'order1'}))
 
     it "order by", () ->
-        ctrl = $controller("MostActive")
+        promise = mocks.discoverProjectsService.fetchMostLiked.withArgs(sinon.match({order_by: 'order1'})).promise()
 
-        ctrl.fetch = sinon.spy()
+        ctrl = $controller("MostLiked")
 
-        ctrl.orderBy('month')
+        ctrl.getOrderBy = sinon.stub().returns('order1')
 
-        expect(ctrl.fetch).to.have.been.called
-        expect(ctrl.currentOrderBy).to.be.equal('month')
+        ctrl.orderBy('type1').then () ->
+            expect(ctrl.loading).to.be.false
+
+        expect(ctrl.loading).to.be.true
+        expect(ctrl.currentOrderBy).to.be.equal('type1')
+
+        promise.resolve()
+
+    it "get order by", () ->
+        ctrl = $controller("MostLiked")
+
+        ctrl.currentOrderBy = 'all'
+
+        orderBy = ctrl.getOrderBy()
+
+        expect(orderBy).to.be.equal('-total_fans')
+
+        ctrl.currentOrderBy = 'other'
+
+        orderBy = ctrl.getOrderBy()
+        expect(orderBy).to.be.equal('-total_fans_last_other')

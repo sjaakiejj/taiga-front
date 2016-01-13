@@ -19,6 +19,7 @@
 
 MostLikedDirective = () ->
     link = (scope, el, attrs, ctrl) ->
+        ctrl.fetch()
 
     return {
         controller: "MostLiked"

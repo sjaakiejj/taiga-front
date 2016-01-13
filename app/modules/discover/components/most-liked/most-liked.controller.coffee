@@ -27,8 +27,6 @@ class MostLikedController
 
         @.currentOrderBy = 'week'
 
-        @.fetch()
-
     fetch: () ->
         order_by = @.getOrderBy()
 
@@ -43,7 +41,7 @@ class MostLikedController
         @discoverProjectsService.fetchMostLiked({order_by: order_by}).then () =>
             @.loading = false
 
-    getOrderBy: (type) ->
+    getOrderBy: () ->
         if @.currentOrderBy == 'all'
             return '-total_fans'
         else

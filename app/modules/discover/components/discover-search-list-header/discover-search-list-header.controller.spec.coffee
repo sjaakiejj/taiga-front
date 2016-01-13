@@ -17,7 +17,7 @@
 # File: discover-home-order-by.controller.spec.coffee
 ###
 
-describe.only "DiscoverSearchListHeader", ->
+describe "DiscoverSearchListHeader", ->
     $provide = null
     $controller = null
     scope = null
