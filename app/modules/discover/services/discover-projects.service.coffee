@@ -58,7 +58,9 @@ class DiscoverProjectsService extends taiga.Service
                 @._mostActive = projects
 
     fetchFeatured: () ->
-        return @rs.projects.getProjects()
+        params = {is_featured: true}
+
+        return @rs.projects.getProjects(params)
             .then (result) =>
                 projects = Immutable.fromJS(result.data)
                 projects = projects.map(@.decorate)

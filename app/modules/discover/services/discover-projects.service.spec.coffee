@@ -100,7 +100,7 @@ describe "tgDiscoverProjectsService", ->
             done()
 
     it "fetch featured", (done) ->
-        mocks.resources.projects.getProjects.promise().resolve({
+        mocks.resources.projects.getProjects.withArgs(sinon.match({is_featured: true})).promise().resolve({
             data: [
                 {id: 1},
                 {id: 2},
