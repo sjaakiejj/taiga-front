@@ -19,9 +19,14 @@ div.wrapper(
 
         form
 
-            .project-details-image
-                fieldset.image-container(tg-user-avatar)
-                    img.avatar(ng-src="{{user.big_photo}}" alt="avatar")
+            .project-details-image(tg-project-logo)
+                fieldset.image-container
+                    img.image(ng-if="project.logo_big_url"
+                               ng-src="{{project.logo_big_url}}"
+                               alt="logo")
+                    img.image(ng-if="!project.logo_big_url"
+                               src="/#{v}/images/logo-color.png"
+                               alt="logo")
                     .loading-overlay
                         img.loading-spinner(
                             src="/#{v}/svg/spinner-circle.svg",
@@ -29,22 +34,22 @@ div.wrapper(
                         )
                     input.hidden(
                         type="file"
-                        id="avatar-field"
-                        tg-avatar-model="avatarAttachment"
+                        id="logo-field"
+                        tg-project-logo-model="logoAttachment"
                     )
                 p.image-help
-                    span {{ 'USER_PROFILE.IMAGE_HELP' | translate }}
+                    span {{ 'ADMIN.PROJECT_PROFILE.LOGO_HELP' | translate }}
                     span.size-info.hidden(tg-bo-html="maxFileSizeMsg")
 
-                a.button-green.change.js-change-avatar(
+                a.button-green.change.js-change-logo(
                     href="#"
-                    title="{{'USER_PROFILE.CHANGE_PHOTO' | translate}}"
-                ) {{'USER_PROFILE.CHANGE_PHOTO' | translate}}
+                    title="{{'ADMIN.PROJECT_PROFILE.CHANGE_LOGO' | translate}}"
+                ) {{'ADMIN.PROJECT_PROFILE.CHANGE_LOGO' | translate}}
 
-                a.use-gravatar(
+                a.use-default-image.js-use-default-logo(
                     href="#"
-                    title="{{ 'USER_PROFILE.ACTION_USE_GRAVATAR' | translate }}"
-                ) {{ 'USER_PROFILE.ACTION_USE_GRAVATAR' | translate }}
+                    title="{{ 'ADMIN.PROJECT_PROFILE.ACTION_USE_DEFAULT_LOGO' | translate }}"
+                ) {{ 'ADMIN.PROJECT_PROFILE.ACTION_USE_DEFAULT_LOGO' | translate }}
 
 
             .project-details-form-data
