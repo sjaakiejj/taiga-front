@@ -34,8 +34,6 @@ class DiscoverSearchController
         @.q = @routeParams.text
         @.filter = @routeParams.filter || 'all'
 
-        @.fetch()
-
     fetch: () ->
         return if @.loading
 
@@ -80,7 +78,6 @@ class DiscoverSearchController
         return {}
 
     onChangeFilter: (filter) ->
-        console.log "change", filter
         @.filter = filter
 
         @.fetch()

@@ -1,72 +1,71 @@
-doctype html
+div(tg-discover-search)
+    .discover-search
+        tg-discover-search-bar(
+            filter="vm.filter",
+            q="vm.q",
+            on-change="vm.onChangeFilter(filter)"
+        )
 
-.discover-search
-    tg-discover-search-bar(
-        filter="vm.filter",
-        q="vm.q",
-        on-change="vm.onChangeFilter(filter)"
-    )
+    .empty-discover-results(ng-if="!vm.searchResult.size")
+        img(
+            src="/#{v}/images/issues-empty.png",
+            alt="{{ DISCOVER.EMPTY | translate }}"
+        )
+        p.title(translate="DISCOVER.EMPTY")
 
-.empty-discover-results(ng-if="!vm.searchResult.size")
-    img(
-        src="/#{v}/images/issues-empty.png",
-        alt="{{ DISCOVER.EMPTY | translate }}"
-    )
-    p.title(translate="DISCOVER.EMPTY")
+    .discover-results(ng-if="vm.searchResult.size")
+        tg-discover-search-list-header(on-change="vm.onChangeOrder()")
 
-.discover-results(ng-if="vm.searchResult.size")
-    tg-discover-search-list-header(on-change="vm.onChangeOrder()")
-
-    ul.project-list
-        li.list-itemtype-project(tg-repeat="project in vm.searchResult track by project.get('id')")
-            .list-itemtype-project-left
-                .list-itemtype-project-image
-                    img(
-                        ng-if="project.get('logo_small_url')"
-                        ng-src="project.get('logo_small_url')"
-                        alt="{{::project.get('name')}}"
-                    )
-                    img(
-                        ng-if="!project.get('logo_small_url')"
-                        src="/#{v}/images/logo-color.png"
-                        alt="{{::project.get('name')}}"
-                    )
-                .list-itemtype-project-data
-                    h2
-                        a(
-                            href="#"
-                            tg-nav="project:project=project.get('slug')"
-                            title="{{ ::project.get('name') }}"
-                        ) {{project.get('name')}}
-                        span.look-for-people(
-                            ng-if="project.get('is_looking_for_people')"
-                            title="{{ ::project.get('looking_for_people_note') }}"
+        ul.project-list
+            li.list-itemtype-project(tg-repeat="project in vm.searchResult track by project.get('id')")
+                .list-itemtype-project-left
+                    .list-itemtype-project-image
+                        img(
+                            ng-if="project.get('logo_small_url')"
+                            ng-src="project.get('logo_small_url')"
+                            alt="{{::project.get('name')}}"
                         )
-                            include ../../../svg/recruit.svg
-                    p {{ ::project.get('description') | limitTo:300 }}
-                        span(ng-if="::project.get('description').length > 300") ...
-            .list-itemtype-project-right.project-statistics
-                span.statistic(
-                    ng-class="{'active': project.get('is_fan')}"
-                    title="{{ 'PROJECT.FANS' | translate }}"
-                )
-                    include ../../../svg/like.svg
-                    span {{::project.get('total_fans')}}
-                span.statistic(
-                    ng-class="{'active': project.get('is_watcher')}"
-                    title="{{ 'PROJECT.WATCHERS' | translate }}"
-                )
-                    include ../../../svg/eye.svg
-                    span {{::project.get('total_watchers')}}
-                span.statistic(title="{{ 'PROJECT.TEAM' | translate }}")
-                    include ../../../svg/team.svg
-                    span.statistics-num {{ ::project.get('members').size }}
+                        img(
+                            ng-if="!project.get('logo_small_url')"
+                            src="/#{v}/images/logo-color.png"
+                            alt="{{::project.get('name')}}"
+                        )
+                    .list-itemtype-project-data
+                        h2
+                            a(
+                                href="#"
+                                tg-nav="project:project=project.get('slug')"
+                                title="{{ ::project.get('name') }}"
+                            ) {{project.get('name')}}
+                            span.look-for-people(
+                                ng-if="project.get('is_looking_for_people')"
+                                title="{{ ::project.get('looking_for_people_note') }}"
+                            )
+                                include ../../../svg/recruit.svg
+                        p {{ ::project.get('description') | limitTo:300 }}
+                            span(ng-if="::project.get('description').length > 300") ...
+                .list-itemtype-project-right.project-statistics
+                    span.statistic(
+                        ng-class="{'active': project.get('is_fan')}"
+                        title="{{ 'PROJECT.FANS' | translate }}"
+                    )
+                        include ../../../svg/like.svg
+                        span {{::project.get('total_fans')}}
+                    span.statistic(
+                        ng-class="{'active': project.get('is_watcher')}"
+                        title="{{ 'PROJECT.WATCHERS' | translate }}"
+                    )
+                        include ../../../svg/eye.svg
+                        span {{::project.get('total_watchers')}}
+                    span.statistic(title="{{ 'PROJECT.TEAM' | translate }}")
+                        include ../../../svg/team.svg
+                        span.statistics-num {{ ::project.get('members').size }}
 
-    .spin(ng-if="vm.loading")
-       img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
+        .spin(ng-if="vm.loading")
+           img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
 
-    a.button-green.more-results(
-        href="#"
-        ng-click="vm.showMore()"
-        ng-if="!vm.loading && vm.nextSearchPage"
-    ) {{ 'DISCOVER.VIEW_MORE' | translate }}
+        a.button-green.more-results(
+            href="#"
+            ng-click="vm.showMore()"
+            ng-if="!vm.loading && vm.nextSearchPage"
+        ) {{ 'DISCOVER.VIEW_MORE' | translate }}
