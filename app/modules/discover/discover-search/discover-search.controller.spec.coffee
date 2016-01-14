@@ -17,7 +17,7 @@
 # File: discover-search.controller.spec.coffee
 ###
 
-describe "DiscoverSearch", ->
+describe.only "DiscoverSearch", ->
     $provide = null
     $controller = null
     mocks = {}
@@ -26,6 +26,11 @@ describe "DiscoverSearch", ->
         mocks.routeParams = {}
 
         $provide.value("$routeParams", mocks.routeParams)
+
+    _mockRoute = ->
+        mocks.route = {}
+
+        $provide.value("$route", mocks.route)
 
     _mockDiscoverProjects = ->
         mocks.discoverProjects = {
@@ -41,6 +46,7 @@ describe "DiscoverSearch", ->
         module (_$provide_) ->
             $provide = _$provide_
 
+            _mockRoute()
             _mockRouteParams()
             _mockDiscoverProjects()
 
@@ -62,11 +68,13 @@ describe "DiscoverSearch", ->
     it "initialize search params", () ->
         mocks.routeParams.text = 'text'
         mocks.routeParams.filter = 'filter'
+        mocks.routeParams.order_by = 'order'
 
         ctrl = $controller('DiscoverSearch')
 
         expect(ctrl.q).to.be.equal('text')
         expect(ctrl.filter).to.be.equal('filter')
+        expect(ctrl.orderBy).to.be.equal('order')
 
     it "fetch", (done) ->
         ctrl = $controller('DiscoverSearch')
@@ -111,17 +119,15 @@ describe "DiscoverSearch", ->
 
         ctrl.page = 1
         ctrl.q = 'text'
-        ctrl.likeOrder = 1
-        ctrl.activityOrder = 1
+        ctrl.orderBy = 1
 
         ctrl.getFilter = () -> return filter
 
         params = {
-            q: 123,
+            filter: '123',
             page: 1,
             q: 'text',
-            likeOrder: 1,
-            activityOrder: 1
+            order_by: 1
         }
 
         ctrl.search()

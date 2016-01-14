@@ -56,5 +56,7 @@
 
     a.view-more-projects.button-green(
         ng-if="highlighted"
+        tg-nav="discover-search"
+        tg-nav-get-params="{\"order_by\": \"{{orderBy}}\"}"
         href="#"
     ) {{ 'DISCOVER.VIEW_MORE' | translate }}

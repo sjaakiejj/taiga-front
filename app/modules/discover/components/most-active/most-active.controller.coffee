@@ -26,13 +26,13 @@ class MostActiveController
         taiga.defineImmutableProperty @, "highlighted", () => return @discoverProjectsService.mostActive
 
         @.currentOrderBy = 'week'
+        @.order_by = @.getOrderBy()
 
     fetch: () ->
         @.loading = true
+        @.order_by = @.getOrderBy()
 
-        order_by = @.getOrderBy()
-
-        return @discoverProjectsService.fetchMostActive({order_by: order_by}).then () =>
+        return @discoverProjectsService.fetchMostActive({order_by: @.order_by}).then () =>
             @.loading = false
 
     orderBy: (type) ->

@@ -54,7 +54,8 @@
             display: block;
             padding: .5rem 1rem;
             transition: all .2s;
-            &:hover {
+            &:hover,
+            &.active {
                 background: $gray;
                 color: $primary-light;
             }

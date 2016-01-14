@@ -3,7 +3,7 @@ div(tg-discover-search)
         tg-discover-search-bar(
             filter="vm.filter",
             q="vm.q",
-            on-change="vm.onChangeFilter(filter)"
+            on-change="vm.onChangeFilter(filter, q)"
         )
 
     .empty-discover-results(ng-if="!vm.searchResult.size && !vm.loading")
@@ -21,9 +21,12 @@ div(tg-discover-search)
            )
 
         div(ng-if="vm.searchResult.size")
-            tg-discover-search-list-header(on-change="vm.onChangeOrder()")
+            tg-discover-search-list-header(
+                on-change="vm.onChangeOrder(orderBy)",
+                order-by="vm.orderBy"
+            )
 
-            ul.project-list
+            ul.project-list(ng-if="vm.searchResult.size")
                 li.list-itemtype-project(tg-repeat="project in vm.searchResult track by project.get('id')")
                     .list-itemtype-project-left
                         .list-itemtype-project-image

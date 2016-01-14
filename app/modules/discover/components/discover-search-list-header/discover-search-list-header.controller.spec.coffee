@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: discover-home-order-by.controller.spec.coffee
+# File: discover-search-list-header.controller.spec.coffee
 ###
 
 describe "DiscoverSearchListHeader", ->
@@ -36,7 +36,9 @@ describe "DiscoverSearchListHeader", ->
         _setup()
 
     it "toggleOpenLike", () ->
-        ctrl = $controller("DiscoverSearchListHeader")
+        ctrl = $controller("DiscoverSearchListHeader", scope, {
+            orderBy: ''
+        })
 
         ctrl.toggleOpenLike()
 
@@ -48,7 +50,9 @@ describe "DiscoverSearchListHeader", ->
         expect(ctrl.like_is_open).to.be.false
 
     it "toggleOpenActivity", () ->
-        ctrl = $controller("DiscoverSearchListHeader")
+        ctrl = $controller("DiscoverSearchListHeader", scope, {
+            orderBy: ''
+        })
 
         ctrl.toggleOpenActivity()
 
@@ -59,24 +63,37 @@ describe "DiscoverSearchListHeader", ->
 
         expect(ctrl.activity_is_open).to.be.false
 
-    it "likeOrderBy", () ->
-        ctrl = $controller("DiscoverSearchListHeader")
+    it "setOrderBy", () ->
+        ctrl = $controller("DiscoverSearchListHeader", scope, {
+            orderBy: ''
+        })
 
         ctrl.onChange = sinon.spy()
 
-        ctrl.likeOrderBy("type1")
+        ctrl.setOrderBy("type1")
 
-        expect(ctrl.likeOrder).to.be.equal('type1')
-        expect(ctrl.activityOrder).to.be.null
-        expect(ctrl.onChange).to.be.called
+        expect(ctrl.onChange).to.have.been.calledWith(sinon.match({orderBy: "type1"}))
 
-    it "activityOrderBy", () ->
-        ctrl = $controller("DiscoverSearchListHeader")
+    it "closed like & activity", () ->
+        ctrl = $controller("DiscoverSearchListHeader", scope, {
+            orderBy: ''
+        })
 
-        ctrl.onChange = sinon.spy()
+        expect(ctrl.like_is_open).to.be.false
+        expect(ctrl.activity_is_open).to.be.false
 
-        ctrl.activityOrderBy("type1")
+    it "open like", () ->
+        ctrl = $controller("DiscoverSearchListHeader", scope, {
+            orderBy: '-total_fans'
+        })
 
-        expect(ctrl.activityOrder).to.be.equal('type1')
-        expect(ctrl.likeOrder).to.be.null
-        expect(ctrl.onChange).to.be.called
+        expect(ctrl.like_is_open).to.be.true
+        expect(ctrl.activity_is_open).to.be.false
+
+    it "open activity", () ->
+        ctrl = $controller("DiscoverSearchListHeader", scope, {
+            orderBy: '-total_activity'
+        })
+
+        expect(ctrl.like_is_open).to.be.false
+        expect(ctrl.activity_is_open).to.be.true

@@ -90,7 +90,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             title: "PROJECT.NAVIGATION.DISCOVER",
             loader: true,
             controller: "DiscoverSearch",
-            controllerAs: "vm"
+            controllerAs: "vm",
+            reloadOnSearch: false
         }
     )
 
@@ -594,7 +595,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         $rootscope.$evalAsync(cb)
 
     $events.setupConnection()
-    
+
     # Load user
     if $auth.isAuthenticated()
         user = $auth.getUser()

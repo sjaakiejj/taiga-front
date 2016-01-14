@@ -22,7 +22,8 @@ HighlightedDirective = () ->
         templateUrl: "discover/components/highlighted/highlighted.html",
         scope: {
             loading: "=",
-            highlighted: "="
+            highlighted: "=",
+            orderBy: "="
         }
     }
 

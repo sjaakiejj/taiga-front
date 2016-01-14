@@ -44,7 +44,7 @@ class DiscoverProjectsService extends taiga.Service
     fetchMostLiked: (params) ->
         return @rs.projects.getProjects(params, false)
             .then (result) =>
-                data = result.data.slice(0, 10)
+                data = result.data.slice(0, 5)
 
                 projects = Immutable.fromJS(data)
                 projects = projects.map(@.decorate)
@@ -54,7 +54,7 @@ class DiscoverProjectsService extends taiga.Service
     fetchMostActive: (params) ->
         return @rs.projects.getProjects(params, false)
             .then (result) =>
-                data = result.data.slice(0, 10)
+                data = result.data.slice(0, 5)
 
                 projects = Immutable.fromJS(data)
                 projects = projects.map(@.decorate)
@@ -66,7 +66,7 @@ class DiscoverProjectsService extends taiga.Service
 
         return @rs.projects.getProjects(params, false)
             .then (result) =>
-                data = result.data.slice(0, 10)
+                data = result.data.slice(0, 4)
 
                 projects = Immutable.fromJS(data)
                 projects = projects.map(@.decorate)

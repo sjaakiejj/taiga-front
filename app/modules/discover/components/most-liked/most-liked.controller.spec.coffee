@@ -50,40 +50,30 @@ describe "MostLiked", ->
 
         _setup()
 
-    it "fetch", () ->
+    it "fetch", (done) ->
         ctrl = $controller("MostLiked")
 
-        ctrl.getOrderBy = sinon.stub().returns('order1')
+        ctrl.getOrderBy = sinon.stub().returns('week')
 
-        ctrl.fetch()
+        mockPromise = mocks.discoverProjectsService.fetchMostLiked.withArgs(sinon.match({order_by: 'week'})).promise()
 
-        expect(mocks.discoverProjectsService.fetchMostLiked).to.have.been.calledWith(sinon.match({order_by: 'order1'}))
-
-    it "order by", () ->
-        promise = mocks.discoverProjectsService.fetchMostLiked.withArgs(sinon.match({order_by: 'order1'})).promise()
-
-        ctrl = $controller("MostLiked")
-
-        ctrl.getOrderBy = sinon.stub().returns('order1')
-
-        ctrl.orderBy('type1').then () ->
-            expect(ctrl.loading).to.be.false
+        promise = ctrl.fetch()
 
         expect(ctrl.loading).to.be.true
-        expect(ctrl.currentOrderBy).to.be.equal('type1')
 
-        promise.resolve()
+        mockPromise.resolve()
 
-    it "get order by", () ->
+        promise.finally () ->
+            expect(ctrl.loading).to.be.false
+            done()
+
+
+    it "order by", () ->
         ctrl = $controller("MostLiked")
 
-        ctrl.currentOrderBy = 'all'
+        ctrl.fetch = sinon.spy()
 
-        orderBy = ctrl.getOrderBy()
+        ctrl.orderBy('month')
 
-        expect(orderBy).to.be.equal('-total_fans')
-
-        ctrl.currentOrderBy = 'other'
-
-        orderBy = ctrl.getOrderBy()
-        expect(orderBy).to.be.equal('-total_fans_last_other')
+        expect(ctrl.fetch).to.have.been.called
+        expect(ctrl.currentOrderBy).to.be.equal('month')

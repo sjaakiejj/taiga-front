@@ -26,20 +26,19 @@ class MostLikedController
         taiga.defineImmutableProperty @, "highlighted", () => return @discoverProjectsService.mostLiked
 
         @.currentOrderBy = 'week'
+        @.order_by = @.getOrderBy()
 
     fetch: () ->
-        order_by = @.getOrderBy()
+        @.loading = true
+        @.order_by = @.getOrderBy()
 
-        @discoverProjectsService.fetchMostLiked({order_by: order_by})
+        @discoverProjectsService.fetchMostLiked({order_by: @.order_by}).then () =>
+            @.loading = false
 
     orderBy: (type) ->
-        @.loading = true
         @.currentOrderBy = type
 
-        order_by = @.getOrderBy()
-
-        @discoverProjectsService.fetchMostLiked({order_by: order_by}).then () =>
-            @.loading = false
+        @.fetch()
 
     getOrderBy: () ->
         if @.currentOrderBy == 'all'

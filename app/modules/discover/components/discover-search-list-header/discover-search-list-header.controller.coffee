@@ -14,15 +14,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: discover-home-order-by.controller.coffee
+# File: discover-search-list-header.controller.coffee
 ###
 
 class DiscoverSearchListHeaderController
     @.$inject = []
 
     constructor: () ->
-        @.like_is_open = false
-        @.activity_is_open = false
+        @.like_is_open = @.orderBy.indexOf('-total_fans') == 0
+        @.activity_is_open = @.orderBy.indexOf('-total_activity') == 0
 
     toggleOpenLike: () ->
         @.like_is_open = !@.like_is_open
@@ -36,16 +36,7 @@ class DiscoverSearchListHeaderController
         if @.activity_is_open
             @.like_is_open = false
 
-    likeOrderBy: (type) ->
-        @.likeOrder = type
-        @.activityOrder = null
-
-        @.onChange()
-
-    activityOrderBy: (type) ->
-        @.activityOrder = type
-        @.likeOrder = null
-
-        @.onChange()
+    setOrderBy: (type = '') ->
+        @.onChange({orderBy: type})
 
 angular.module("taigaDiscover").controller("DiscoverSearchListHeader", DiscoverSearchListHeaderController)

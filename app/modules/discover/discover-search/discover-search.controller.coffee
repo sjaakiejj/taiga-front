@@ -20,19 +20,19 @@
 class DiscoverSearchController
     @.$inject = [
         '$routeParams',
-        'tgDiscoverProjectsService'
+        'tgDiscoverProjectsService',
+        '$route'
     ]
 
-    constructor: (@routeParams, @discoverProjectsService) ->
+    constructor: (@routeParams, @discoverProjectsService, @route) ->
         @.page = 1
-        @.likeOrder = null
-        @.activityOrder = null
 
         taiga.defineImmutableProperty @, "searchResult", () => return @discoverProjectsService.searchResult
         taiga.defineImmutableProperty @, "nextSearchPage", () => return @discoverProjectsService.nextSearchPage
 
         @.q = @routeParams.text
         @.filter = @routeParams.filter || 'all'
+        @.orderBy = @routeParams['order_by'] || ''
 
     fetch: () ->
         return if @.loading
@@ -59,8 +59,7 @@ class DiscoverSearchController
         params = {
             page: @.page,
             q: @.q,
-            likeOrder: @.likeOrder,
-            activityOrder: @.activityOrder
+            order_by: @.orderBy
         }
 
         _.assign(params, filter)
@@ -77,12 +76,24 @@ class DiscoverSearchController
 
         return {}
 
-    onChangeFilter: (filter) ->
+    onChangeFilter: (filter, q) ->
         @.filter = filter
+        @.q = q
+
+        @route.updateParams({
+            filter: @.filter,
+            text: @.q
+        })
 
         @.fetch()
 
-    onChangeOrder: () ->
+    onChangeOrder: (orderBy) ->
+        @.orderBy = orderBy
+
+        @route.updateParams({
+            order_by: orderBy
+        })
+
         @.fetch()
 
 angular.module("taigaDiscover").controller("DiscoverSearch", DiscoverSearchController)

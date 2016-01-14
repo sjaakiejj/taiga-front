@@ -55,7 +55,7 @@ describe "MostActive", ->
 
         ctrl.getOrderBy = sinon.stub().returns('week')
 
-        mockPromise = mocks.discoverProjectsService.fetchMostActive.withArgs({order_by: 'week'}).promise()
+        mockPromise = mocks.discoverProjectsService.fetchMostActive.withArgs(sinon.match({order_by: 'week'})).promise()
 
         promise = ctrl.fetch()
 

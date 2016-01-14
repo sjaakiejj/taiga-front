@@ -53,18 +53,20 @@ describe "DiscoverSearchBarController", ->
     it "select filter", () ->
         ctrl = $controller("DiscoverSearchBar")
         ctrl.onChange = sinon.spy()
+        ctrl.q = 'query'
 
         ctrl.selectFilter('text')
 
         expect(mocks.discoverProjectsService.fetchStats).to.have.been.called;
-        expect(ctrl.onChange).to.have.been.calledWith(sinon.match({filter: 'text'}));
+        expect(ctrl.onChange).to.have.been.calledWith(sinon.match({filter: 'text', q: 'query'}));
 
     it "submit filter", () ->
         ctrl = $controller("DiscoverSearchBar")
         ctrl.filter = 'all'
+        ctrl.q = 'query'
         ctrl.onChange = sinon.spy()
 
         ctrl.submitFilter()
 
         expect(mocks.discoverProjectsService.fetchStats).to.have.been.called;
-        expect(ctrl.onChange).to.have.been.calledWith(sinon.match({filter: 'all'}));
+        expect(ctrl.onChange).to.have.been.calledWith(sinon.match({filter: 'all', q: 'query'}));

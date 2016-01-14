@@ -9,7 +9,7 @@ div.discover-header
             translate-values="{ projects: '{{vm.projects}}'}"
         )
 
-        form
+        form(ng-submit="vm.submitFilter()")
             div.searchbox
                 input(
                     name="search",
@@ -17,14 +17,12 @@ div.discover-header
                     placeholder="Search"
                     ng-model="vm.q"
                 )
-                //Search on click
                 a.search-button(
                     ng-click="vm.submitFilter()"
                     href="#"
                     title="{{ 'COMMON.SEARCH' | translate }}"
                 )
                     include ../../../../svg/search.svg
-
 
             fieldset.searchbox-filters(ng-if="vm.filter")
                 input(

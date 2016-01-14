@@ -27,8 +27,7 @@ DiscoverSearchListHeaderDirective = () ->
         templateUrl: "discover/components/discover-search-list-header/discover-search-list-header.html",
         scope: {
             onChange: "&",
-            activityOrder: "=",
-            likeOrder: "="
+            orderBy: "="
         },
         link: link
     }
