@@ -17,7 +17,7 @@ section.profile-projects
                 .list-itemtype-project-image
                     img(
                         ng-if="project.get('logo_small_url')"
-                        ng-src="project.get('logo_small_url')"
+                        ng-src="{{::project.get('logo_small_url')}}"
                         alt="{{::project.get('name')}}"
                     )
                     img(

@@ -8,14 +8,14 @@ div.wrapper
                 title="{{::project.get('name')}}"
             )
                 img(
-                    ng-if="project.get('logo_small_url')"
-                    ng-src="project.get('logo_small_url')"
-                    alt="{{::project.get('name')}}"
+                    ng-if="vm.project.get('logo_small_url')"
+                    ng-src="{{::vm.project.get('logo_small_url')}}"
+                    alt="{{::vm.project.get('name')}}"
                 )
                 img(
-                    ng-if="!project.get('logo_small_url')"
+                    ng-if="!vm.project.get('logo_small_url')"
                     src="/#{v}/images/logo-color.png"
-                    alt="{{::project.get('name')}}"
+                    alt="{{::vm.project.get('name')}}"
                 )
             .single-project-title-wrapper
                 .intro-options

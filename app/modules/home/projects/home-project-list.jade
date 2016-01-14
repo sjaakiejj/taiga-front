@@ -16,7 +16,7 @@ section.home-project-list(ng-if="vm.projects.size")
                 )
                     img(
                         ng-if="project.get('logo_small_url')"
-                        ng-src="project.get('logo_small_url')"
+                        ng-src="{{::project.get('logo_small_url')}}"
                         alt="{{::project.get('name')}}"
                     )
                     img(

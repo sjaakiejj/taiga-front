@@ -1,14 +1,14 @@
 .list-itemtype-project
     .list-itemtype-project-left
         .list-itemtype-project-data-wrapper
-        
+
             .list-itemtype-project-image
                 img(
-                    ng-if="!item.get('logo_small_url')"
-                    ng-src="item.get('logo_small_url')"
+                    ng-if="!vm.item.get('logo_small_url')"
+                    ng-src="{{::vm.item.get('logo_small_url')}}"
                     title="{{ ::vm.item.get('name') }}"
                 )
-        
+
             .list-itemtype-project-data
                 h2
                     a(

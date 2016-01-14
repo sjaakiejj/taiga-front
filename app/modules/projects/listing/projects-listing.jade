@@ -13,12 +13,12 @@
             ul(tg-sort-projects="vm.projects")
                 li.list-itemtype-project(tg-bind-scope, tg-repeat="project in vm.projects track by project.get('id')")
                     .list-itemtype-project-left
-                        
+
                         .list-itemtype-project-data-wrapper
                             .list-itemtype-project-image
                                 img(
                                     ng-if="project.get('logo_small_url')"
-                                    ng-src="project.get('logo_small_url')"
+                                    ng-src="{{::project.get('logo_small_url')}}"
                                     alt="{{::project.get('name')}}"
                                 )
                                 img(
@@ -27,7 +27,7 @@
                                     alt="{{::project.get('name')}}"
                                 )
                             .list-itemtype-project-data
-                                h2 
+                                h2
                                     a(
                                         href="#"
                                         tg-nav="project:project=project.get('slug')"
@@ -40,7 +40,7 @@
                                         include ../../../svg/lock.svg
                                 p {{ ::project.get('description') | limitTo:300 }}
                                     span(ng-if="::project.get('description').length > 300") ...
-                                
+
                         .list-itemtype-project-tags.tag-container(ng-if="::project.get('tags').size")
                             span.tag(
                                 style='border-left: 5px solid {{::tag.get("color")}};'
