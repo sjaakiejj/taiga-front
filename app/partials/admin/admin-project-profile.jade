@@ -121,11 +121,7 @@ div.wrapper(
                             label.trans-button(for="private-project") {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
                                 span(title="{{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT_DESC' | translate }}")
                                     include ../../svg/help.svg
-                            input.public-project-url(
-                                type="text"
-                                readonly="readonly"
-                                ng-model="project.slug"
-                            )
+                                    
                         div.privacy-option
                             input.privacy-project(
                                 type="radio"
