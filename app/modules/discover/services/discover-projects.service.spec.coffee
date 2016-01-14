@@ -64,7 +64,7 @@ describe "tgDiscoverProjectsService", ->
     it "fetch most liked", (done) ->
         params = {test: 1}
 
-        mocks.resources.projects.getProjects.withArgs(sinon.match(params)).promise().resolve({
+        mocks.resources.projects.getProjects.withArgs(sinon.match(params), false).promise().resolve({
             data: [
                 {id: 1},
                 {id: 2},
@@ -83,7 +83,7 @@ describe "tgDiscoverProjectsService", ->
     it "fetch most active", (done) ->
         params = {test: 1}
 
-        mocks.resources.projects.getProjects.withArgs(sinon.match(params)).promise().resolve({
+        mocks.resources.projects.getProjects.withArgs(sinon.match(params), false).promise().resolve({
             data: [
                 {id: 1},
                 {id: 2},
@@ -100,7 +100,7 @@ describe "tgDiscoverProjectsService", ->
             done()
 
     it "fetch featured", (done) ->
-        mocks.resources.projects.getProjects.withArgs(sinon.match({is_featured: true})).promise().resolve({
+        mocks.resources.projects.getProjects.withArgs(sinon.match({is_featured: true}), false).promise().resolve({
             data: [
                 {id: 1},
                 {id: 2},

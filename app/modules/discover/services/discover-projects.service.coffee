@@ -42,17 +42,21 @@ class DiscoverProjectsService extends taiga.Service
         taiga.defineImmutableProperty @, "projectsCount", () => return @._projectsCount
 
     fetchMostLiked: (params) ->
-        return @rs.projects.getProjects(params)
+        return @rs.projects.getProjects(params, false)
             .then (result) =>
-                projects = Immutable.fromJS(result.data)
+                data = result.data.slice(0, 10)
+
+                projects = Immutable.fromJS(data)
                 projects = projects.map(@.decorate)
 
                 @._mostLiked = projects
 
     fetchMostActive: (params) ->
-        return @rs.projects.getProjects(params)
+        return @rs.projects.getProjects(params, false)
             .then (result) =>
-                projects = Immutable.fromJS(result.data)
+                data = result.data.slice(0, 10)
+
+                projects = Immutable.fromJS(data)
                 projects = projects.map(@.decorate)
 
                 @._mostActive = projects
@@ -60,9 +64,11 @@ class DiscoverProjectsService extends taiga.Service
     fetchFeatured: () ->
         params = {is_featured: true}
 
-        return @rs.projects.getProjects(params)
+        return @rs.projects.getProjects(params, false)
             .then (result) =>
-                projects = Immutable.fromJS(result.data)
+                data = result.data.slice(0, 10)
+
+                projects = Immutable.fromJS(data)
                 projects = projects.map(@.decorate)
 
                 @._featured = projects

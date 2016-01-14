@@ -22,10 +22,19 @@ pagination = () ->
 Resource = (urlsService, http, paginateResponseService) ->
     service = {}
 
-    service.getProjects = (params = {}) ->
+    service.getProjects = (params = {}, pagination = true) ->
         url = urlsService.resolve("projects")
 
-        return http.get(url, params)
+        httpOptions = {}
+
+        if !pagination
+            httpOptions = {
+                headers: {
+                    "x-disable-pagination": "1"
+                }
+            }
+
+        return http.get(url, params, httpOptions)
 
     service.getProjectBySlug = (projectSlug) ->
         url = urlsService.resolve("projects")
