@@ -58,3 +58,13 @@ describe "DiscoverSearchBarController", ->
 
         expect(mocks.discoverProjectsService.fetchStats).to.have.been.called;
         expect(ctrl.onChange).to.have.been.calledWith(sinon.match({filter: 'text'}));
+
+    it "submit filter", () ->
+        ctrl = $controller("DiscoverSearchBar")
+        ctrl.filter = 'all'
+        ctrl.onChange = sinon.spy()
+
+        ctrl.submitFilter()
+
+        expect(mocks.discoverProjectsService.fetchStats).to.have.been.called;
+        expect(ctrl.onChange).to.have.been.calledWith(sinon.match({filter: 'all'}));

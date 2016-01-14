@@ -23,11 +23,15 @@ class DiscoverSearchBarController
     ]
 
     constructor: (@discoverProjectsService) ->
+        @.filter = 'all'
         taiga.defineImmutableProperty @, 'projects', () => return @discoverProjectsService.projectsCount
 
         @discoverProjectsService.fetchStats()
 
     selectFilter: (filter) ->
         @.onChange({filter: filter})
+
+    submitFilter: ->
+        @.onChange({filter: @.filter})
 
 angular.module("taigaDiscover").controller("DiscoverSearchBar", DiscoverSearchBarController)
