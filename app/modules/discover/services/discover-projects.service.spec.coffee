@@ -68,14 +68,18 @@ describe "tgDiscoverProjectsService", ->
             data: [
                 {id: 1},
                 {id: 2},
-                {id: 3}
+                {id: 3},
+                {id: 4},
+                {id: 5},
+                {id: 6},
+                {id: 7}
             ]
         })
 
         discoverProjectsService.fetchMostLiked(params).then () ->
             result = discoverProjectsService._mostLiked.toJS()
 
-            expect(result).to.have.length(3)
+            expect(result).to.have.length(5)
             expect(result[0].decorate).to.be.ok;
 
             done()
@@ -87,14 +91,18 @@ describe "tgDiscoverProjectsService", ->
             data: [
                 {id: 1},
                 {id: 2},
-                {id: 3}
+                {id: 3},
+                {id: 4},
+                {id: 5},
+                {id: 6},
+                {id: 7}
             ]
         })
 
         discoverProjectsService.fetchMostActive(params).then () ->
             result = discoverProjectsService._mostActive.toJS()
 
-            expect(result).to.have.length(3)
+            expect(result).to.have.length(5)
             expect(result[0].decorate).to.be.ok;
 
             done()
@@ -104,14 +112,18 @@ describe "tgDiscoverProjectsService", ->
             data: [
                 {id: 1},
                 {id: 2},
-                {id: 3}
+                {id: 3},
+                {id: 4},
+                {id: 5},
+                {id: 6},
+                {id: 7}
             ]
         })
 
         discoverProjectsService.fetchFeatured().then () ->
             result = discoverProjectsService._featured.toJS()
 
-            expect(result).to.have.length(3)
+            expect(result).to.have.length(4)
             expect(result[0].decorate).to.be.ok;
 
             done()

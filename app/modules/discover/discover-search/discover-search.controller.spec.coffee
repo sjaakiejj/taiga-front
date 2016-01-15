@@ -17,7 +17,7 @@
 # File: discover-search.controller.spec.coffee
 ###
 
-describe.only "DiscoverSearch", ->
+describe "DiscoverSearch", ->
     $provide = null
     $controller = null
     mocks = {}
@@ -145,3 +145,30 @@ describe.only "DiscoverSearch", ->
 
         ctrl.filter = 'kanban'
         expect(ctrl.getFilter()).to.be.eql({is_kanban_activated: true})
+
+    it "onChangeFilter", () ->
+        ctrl = $controller('DiscoverSearch')
+
+        mocks.route.updateParams = sinon.stub()
+
+        ctrl.fetch = sinon.spy()
+
+        ctrl.onChangeFilter('filter', 'query')
+
+        expect(ctrl.filter).to.be.equal('filter')
+        expect(ctrl.q).to.be.equal('query')
+        expect(ctrl.fetch).to.have.been.called
+        expect(mocks.route.updateParams).to.have.been.calledWith(sinon.match({filter: 'filter', text: 'query'}))
+
+    it "onChangeOrder", () ->
+        ctrl = $controller('DiscoverSearch')
+
+        mocks.route.updateParams = sinon.stub()
+
+        ctrl.fetch = sinon.spy()
+
+        ctrl.onChangeOrder('order-by')
+
+        expect(ctrl.orderBy).to.be.equal('order-by')
+        expect(ctrl.fetch).to.have.been.called
+        expect(mocks.route.updateParams).to.have.been.calledWith(sinon.match({order_by: 'order-by'}))
