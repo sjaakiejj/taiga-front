@@ -97,7 +97,7 @@ describe "dropdownUserDirective", () ->
         expect(vm.isFeedbackEnabled).to.be.equal(true)
 
     it "dropdown user log out", () ->
-        mockTgNavUrls.resolve.withArgs("login").returns("/login")
+        mockTgNavUrls.resolve.withArgs("discover").returns("/discover")
         elm = createDirective()
         scope.$apply()
         vm = elm.isolateScope().vm
@@ -106,7 +106,7 @@ describe "dropdownUserDirective", () ->
         vm.logout()
         expect(mockTgAuth.logout.callCount).to.be.equal(1)
         expect(mockTgLocation.path.callCount).to.be.equal(1)
-        expect(mockTgLocation.path.calledWith("/login")).to.be.true
+        expect(mockTgLocation.path.calledWith("/discover")).to.be.true
 
     it "dropdown user send feedback", () ->
         elm = createDirective()

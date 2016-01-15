@@ -76,7 +76,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
-    $routeProvider.when("/discover/",
+    $routeProvider.when("/discover",
         {
             templateUrl: "discover/discover-home/discover-home.html",
             controller: "DiscoverHome",
