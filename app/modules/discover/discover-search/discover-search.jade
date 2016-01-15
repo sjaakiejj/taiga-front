@@ -14,11 +14,7 @@ div(tg-discover-search)
         p.title(translate="DISCOVER.EMPTY")
 
     .discover-results
-        .spin(ng-if="vm.loading")
-           img.loading-spinner(
-               src="/#{v}/svg/spinner-circle.svg",
-               alt="{{'COMMON.LOADING' | translate}}"
-           )
+        .spin(tg-loading="vm.loading")
 
         div(ng-if="vm.searchResult.size")
             tg-discover-search-list-header(

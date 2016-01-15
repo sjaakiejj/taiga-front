@@ -1,9 +1,5 @@
 .highlighted-projects-container
-    div(ng-if="loading")
-        img.loading-spinner(
-            src="/#{v}/svg/spinner-circle.svg",
-            alt="{{'COMMON.LOADING' | translate}}"
-        )
+    div(tg-loading="loading")
     div.highlighted-project(
         tg-repeat="project in highlighted track by project.get('id')"
         ng-if="!loading"
