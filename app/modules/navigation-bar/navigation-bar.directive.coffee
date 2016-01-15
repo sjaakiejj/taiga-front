@@ -22,6 +22,8 @@ NavigationBarDirective = (currentUserService, navigationBarService, $location) -
         scope.vm = {}
 
         scope.$on "$routeChangeSuccess", () ->
+            scope.vm.currentUrl = $location.url()
+
             if $location.path() == "/"
                 scope.vm.active = true
             else
@@ -30,7 +32,6 @@ NavigationBarDirective = (currentUserService, navigationBarService, $location) -
         taiga.defineImmutableProperty(scope.vm, "projects", () -> currentUserService.projects.get("recents"))
         taiga.defineImmutableProperty(scope.vm, "isAuthenticated", () -> currentUserService.isAuthenticated())
         taiga.defineImmutableProperty(scope.vm, "isEnabledHeader", () -> navigationBarService.isEnabledHeader())
-
 
     directive = {
         templateUrl: "navigation-bar/navigation-bar.html"

@@ -16,15 +16,16 @@ nav.navbar(ng-if="vm.isEnabledHeader")
     div.nav-right(ng-if="!vm.isAuthenticated")
         a.login(
             tg-nav="login",
+            tg-nav-get-params="{\"next\": \"{{vm.currentUrl}}\"}"
             href="#",
-            title="{{ 'LOGIN_COMMON.ACTION_SIGN_IN' | translate }}"   
+            title="{{ 'LOGIN_COMMON.ACTION_SIGN_IN' | translate }}"
         ) {{ 'LOGIN_COMMON.ACTION_SIGN_IN' | translate }}
         a.register(
             tg-nav="register",
             href="#",
-            title="{{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}"   
+            title="{{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}"
         ) {{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}
-        
+
     div.nav-right(ng-if="vm.isAuthenticated")
         a(tg-nav="home",
           ng-class="{active: vm.active}",
@@ -35,6 +36,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         a(
             href="#",
             tg-nav="discover",
+            tg-nav-get-params="{\"next\": \"{{vm.currentUrl}}\"}",
             title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
         )
             include ../../svg/discover.svg
