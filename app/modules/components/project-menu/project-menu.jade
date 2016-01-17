@@ -85,12 +85,22 @@ nav.menu(
                     span.icon.icon-video
                     span.helper(translate="PROJECT.SECTION.MEETUP")
 
+            li(id="nav-chat", ng-if="vm.project.get('chat')")
+                a(
+                    ng-href="{{vm.project.get('chat')}}"
+                    aria-label="{{'PROJECT.SECTION.CHAT' | translate}}"
+                    ng-class="{active: vm.active == 'chat'}"
+                    tabindex="8"
+                )
+                    span.icon.icon-video
+                    span.helper(translate="PROJECT.SECTION.CHAT")
+
             li(id="nav-admin", ng-if="vm.project.get('i_am_owner')")
                 a(
                     tg-nav="project-admin-home:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'admin'}"
                     aria-label="{{'PROJECT.SECTION.ADMIN' | translate}}"
-                    tabindex="8"
+                    tabindex="9"
                 )
                     span.icon.icon-settings
                     span.helper(translate="PROJECT.SECTION.ADMIN")
