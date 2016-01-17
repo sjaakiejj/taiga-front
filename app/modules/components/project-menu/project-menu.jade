@@ -75,12 +75,22 @@ nav.menu(
                     span(class="icon icon-team")
                     span.helper(translate="PROJECT.SECTION.TEAM")
 
+            li(id="nav-chat")
+                a(
+                    tg-nav="project-chat:project=vm.project.get('chat')"
+                    ng-class="{active: vm.active == 'chat'}"
+                    aria-label="{{'PROJECT.SECTION.CHAT' | translate}}"
+                    tabindex="7"
+                )
+                    span(class="icon icon-chat")
+                    span.helper(translate="PROJECT.SECTION.CHAT")
+
             li(id="nav-video", ng-if="vm.project.get('videoconferenceUrl')")
                 a(
                     ng-href="{{vm.project.get('videoconferenceUrl')}}"
                     target="_blank"
                     aria-label="{{'PROJECT.SECTION.MEETUP' | translate}}"
-                    tabindex="7"
+                    tabindex="8"
                 )
                     span.icon.icon-video
                     span.helper(translate="PROJECT.SECTION.MEETUP")
@@ -90,7 +100,7 @@ nav.menu(
                     tg-nav="project-admin-home:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'admin'}"
                     aria-label="{{'PROJECT.SECTION.ADMIN' | translate}}"
-                    tabindex="8"
+                    tabindex="9"
                 )
                     span.icon.icon-settings
                     span.helper(translate="PROJECT.SECTION.ADMIN")
