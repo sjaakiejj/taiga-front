@@ -55,7 +55,8 @@ class ProjectMenuController
             backlog: false,
             kanban: false,
             issues: false,
-            wiki: false
+            wiki: false,
+            chat: true
         })
 
         if @.project.get("is_backlog_activated") && @.project.get("my_permissions").indexOf("view_us") != -1
