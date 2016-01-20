@@ -1,0 +1,18 @@
+$badge-font-size: 0.75em !default;
+$error-color: #fbe3e4 !default;
+
+
+@mixin badge($color: $error-color) {
+  background-color: $color;
+  border-radius: $badge-font-size * 5;
+  color: darken($color, 60%);
+  display: inline-block;
+  font-size: $badge-font-size;
+  line-height: 1;
+  padding: 0.4em 1.2em;
+}
+
+
+.badge {
+  @include badge;
+}

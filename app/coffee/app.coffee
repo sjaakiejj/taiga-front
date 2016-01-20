@@ -128,6 +128,15 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
+    $routeProvider.when("/project/:pslug/chat",
+        {
+            templateUrl: "chat/chat.html",
+            loader: true,
+            section: "chat",
+            joyride: "chat"
+        }
+    )
+
     # Milestone
     $routeProvider.when("/project/:pslug/taskboard/:sslug",
         {

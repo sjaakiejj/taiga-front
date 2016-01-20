@@ -730,7 +730,8 @@
             "WIKI": "Wiki",
             "TEAM": "Team",
             "MEETUP": "Meet Up",
-            "ADMIN": "Admin"
+            "ADMIN": "Admin",
+            "CHAT": "Chat"
         },
         "NAVIGATION": {
             "SECTION_TITLE": "Your projects",

@@ -1,0 +1,39 @@
+doctype html
+
+div.wrapper(tg-chat, ng-controller="ChatController as ctrl"
+            ng-init="section='chat'")
+    tg-project-menu
+    include ../includes/components/mainTitle
+    section.menu.admin(style="height:calc(100vh - 50px);")
+        h2(ng-bind="'Channels'")
+        div.admin-menu(style="height:50%; overflow: scroll;")
+            nav
+                ul
+                    li(ng-repeat="channel in channelList | filter: {is_member: true}")
+                        a(ng-click="openChannel(channel.id)") 
+                            span \#{{channel.name}} 
+                            span.badge(ng-if="unread[channel.id] > 0") {{unread[channel.id]}}
+
+        h2(ng-bind="'Users'")
+        div.admin-menu(style="height:30%; overflow: scroll;")
+            nav
+                ul
+                    li(ng-repeat="im in imList | filter: {is_im: true, is_user_deleted: false}")
+                        a(ng-click="openIm(im.id)") 
+                            span \#{{memberList[im.user].name}}
+                            span.badge(ng-if="unread[im.id] > 0") {{unread[im.id]}}
+
+
+
+    section.main.chat(style="height:calc(100vh - 50px);")
+        div.chat.box(id="mainChatWindow", style="height:calc(100% - 75px);overflow:scroll;")
+            div.chat.box.message(ng-repeat="message in channelHistory.slice().reverse()" ng-if="channelHistory.length > 0") 
+                div(style="float:left; width: 40px; padding: 3px")
+                    img(src="{{memberList[message.user].profile.image_32 }}") 
+                div(style="float:left; width: calc(100% - 42px); padding: 3px;")
+                    h5(style="font-weight:bold") {{memberList[message.user].real_name}}
+                    span(style="white-space: pre-wrap;", ng-bind-html="message.text | messageParser : memberList")
+            div.chat.box.message(ng-if="channelHistory.length == 0")
+                span(ng-bind-html="'No messages available...'")
+        div.chat.newMessage(style="height:75px;")
+            textarea(ng-model="newMessage", style="min-height:100%;height:100%;width:100%; resize: none; background: white;", ng-keypress="$event.keyCode == 13 ? sendMessage($event) : null")

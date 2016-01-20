@@ -70,6 +70,7 @@ urls = {
     "project-kanban": "/project/:project/kanban"
     "project-issues": "/project/:project/issues"
     "project-search": "/project/:project/search"
+    "project-chat": "/project/:project/chat"
 
     "project-userstories-detail": "/project/:project/us/:ref"
     "project-tasks-detail": "/project/:project/task/:ref"

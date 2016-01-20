@@ -48,8 +48,11 @@ class NavigationUrlsService extends taiga.Service
 
     resolve: (name, ctx) ->
         url = @.urls[name]
+        console.log url
         return "" if not url
+        console.log url
         return @.formatUrl(url, ctx) if ctx
+        console.log url
         return url
 
 module.service("$tgNavUrls", NavigationUrlsService)

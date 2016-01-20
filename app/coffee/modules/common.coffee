@@ -218,6 +218,7 @@ ProjectUrl = ($navurls) ->
     get = (project) ->
         ctx = {project: project.slug}
 
+        # Should add to permissions
         if project.is_backlog_activated and project.my_permissions.indexOf("view_us") > -1
             return $navurls.resolve("project-backlog", ctx)
         if project.is_kanban_activated and project.my_permissions.indexOf("view_us") > -1
@@ -226,6 +227,9 @@ ProjectUrl = ($navurls) ->
             return $navurls.resolve("project-wiki", ctx)
         if project.is_issues_activated and project.my_permissions.indexOf("view_issues") > -1
             return $navurls.resolve("project-issues", ctx)
+
+        if project.is_chat_activated
+            return $navurls.resolve("project-chat", ctx)
 
         return $navurls.resolve("project", ctx)
 

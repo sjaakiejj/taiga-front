@@ -82,7 +82,7 @@ nav.menu(
                     aria-label="{{'PROJECT.SECTION.CHAT' | translate}}"
                     tabindex="7"
                 )
-                    span(class="icon icon-chat")
+                    include ../../../svg/chat.svg
                     span.helper(translate="PROJECT.SECTION.CHAT")
 
             li(id="nav-video", ng-if="vm.project.get('videoconferenceUrl')")
